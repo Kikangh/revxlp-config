@@ -39,17 +39,6 @@
 #define THUMBS_L 36 37 38
 #define THUMBS_R 39 40 41
 
-/ {
-    combos {
-        compatible = "zmk,combos";
-        combo_esc3 {
-            timeout-ms = <50>;
-            key-positions = <36 37>;
-            bindings = <&kp ESC>;
-        };
-    };
-};
-
 /*                KEY POSITIONS
 
   ╭────────────────────────╮ ╭────────────────────────╮
