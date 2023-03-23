@@ -8,199 +8,235 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/backlight.h>
+#include <dt-bindings/zmk/mouse.h>
+#include "keymap_optimot.h"
 
-#define NAV_L 1
-#define NUM_L 2
-#define MED_L 3
-#define FUN_L 4
+
+#define OPTIM   0
+#define LOWER   1
+#define RAISE   2
+#define ARROW   3
+#define NUMBERS 4
+#define SCREEN  5
+
+#include "combos.dtsi" // This include **has** to be made **after** the layers' define, else it won't compile.
+
+&kscan0 { debounce-period = <17>; };
+
+// Mouse specific config
+&mmv {    
+        time-to-max-speed-ms = <500>;
+        acceleration-exponent=<1>;
+};
+&mwh {    
+        time-to-max-speed-ms = <2000>;
+        acceleration-exponent=<0>;
+}; 
+
+// Key position groups
+#define KEYS_L 0 1 2 3 4 5 12 13 14 15 16 17 24 25 26 27 28 29
+#define KEYS_R 6 7 8 9 10 11 18 19 20 21 22 23 30 31 32 33 34 35   
+#define THUMBS_L 36 37 38
+#define THUMBS_R 39 40 41
 
 / {
-    tap_dances {
-    	shifty: shift_caps_word {
-		compatible = "zmk,behavior-tap-dance";
-		label = "TD_SHIFTY";
-		#binding-cells = <0>;
-		tapping-term-ms = <150>;
-		bindings = <&kp LSHFT>, <&caps_word>;
-	};
-    };
-
-    cond_layers {
-        compatible = "zmk,conditional-layers";
-	tri {
-	    if-layers = <NUM_L NAV_L>;
-	    then-layer = <MED_L>;
-        };
-    };
     combos {
         compatible = "zmk,combos";
+        combo_esc3 {
+            timeout-ms = <50>;
+            key-positions = <36 37>;
+            bindings = <&kp ESC>;
+        };
+    };
+};
 
-	l_curly_bracket {
-	    timeout-ms = <50>;
-            key-positions = <2 14>;
-            bindings = <&kp LS(LBKT)>;
-	    layers = <NUM_L>;
-	};
+/*                KEY POSITIONS
 
-	r_curly_bracket {
-	    timeout-ms = <50>;
-            key-positions = <4 16>;
-            bindings = <&kp LS(RBKT)>;
-	    layers = <NUM_L>;
-	};
-	lbracket {
-	    timeout-ms = <50>;
-            key-positions = <14 26>;
-            bindings = <&kp LBKT>;
-	    layers = <NUM_L>;
-	};
+  ╭────────────────────────╮ ╭────────────────────────╮
+  │  0   1   2   3   4   5 │ │  6   7   8   9  10  11 │
+  │ 12  13  14  15  16  17 │ │ 18  19  20  21  22  23 │
+  │ 24  25  26  27  28  29 │ │ 30  31  32  33  34  35 │
+  ╰───────────╮ 36  37  38 │ │ 39  40  41 ╭───────────╯
+              ╰────────────╯ ╰────────────╯            */
 
-	rbracket {
-	    timeout-ms = <50>;
-            key-positions = <16 28>;
-            bindings = <&kp RBKT>;
-	    layers = <NUM_L>;
-	};
-
-	ques_mark_combo {
-	    timeout-ms = <50>;
-            key-positions = <21 33>;
-            bindings = <&kp LS(FSLH)>;
-	};
-
-	bslash_combo {
-	    timeout-ms = <50>;
-            key-positions = <10 22>;
-            bindings = <&kp BSLH>;
-	};
-
-	fslash_combo {
-	    timeout-ms = <50>;
-            key-positions = <22 34>;
-            bindings = <&kp FSLH>;
-	};
-
-	bootloader_combo {
-	    timeout-ms = <50>;
-            key-positions = <5 6>;
-            bindings = <&bootloader>;
-	    layers = <MED_L>;
-	};
-
+/ {
+    behaviors {
+        hml: homerow_mods_l {
+            compatible = "zmk,behavior-hold-tap";
+            label = "ALPHA_MT_L";
+            #binding-cells = <2>;
+            tapping-term-ms = <250>;
+            quick-tap-ms = <150>;
+            flavor = "balanced";
+            bindings = <&kp>, <&kp>;
+            global-quick-tap-ms = <100>;
+            hold-trigger-key-positions = <KEYS_R THUMBS_R>;
+            hold-trigger-on-release;
+        };
+        hsl: homerow_shift_l {
+            compatible = "zmk,behavior-hold-tap";
+            label = "ALPHA_SFT_L";
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            quick-tap-ms = <150>;
+            flavor = "balanced";
+            bindings = <&kp>, <&kp>;
+            hold-trigger-key-positions = <KEYS_R KEYS_L THUMBS_L>;
+            hold-trigger-on-release;
+        };
+        hll: homerow_layer_l {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HOMEROW_LAYER_L";
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            quick-tap-ms = <150>; //trying to see what gives with 0 instead of 150
+            flavor = "tap-preferred";
+            bindings = <&mo>, <&kp>;
+            hold-trigger-key-positions = <KEYS_R THUMBS_L THUMBS_R>;
+            hold-trigger-on-release;
+        };
+        hmr: homerow_mods_r {
+            compatible = "zmk,behavior-hold-tap";
+            label = "ALPHA_MT_R";
+            #binding-cells = <2>;
+            tapping-term-ms = <250>;
+            quick-tap-ms = <150>;
+            flavor = "balanced";
+            bindings = <&kp>, <&kp>;
+            global-quick-tap-ms = <100>;
+            hold-trigger-key-positions = <KEYS_L THUMBS_L>;
+            hold-trigger-on-release;
+        };
+        hsr: homerow_shift_r {
+            compatible = "zmk,behavior-hold-tap";
+            label = "ALPHA_SFT_R";
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            quick-tap-ms = <100>; //trying to see if quick right hm shift with X works better with 100 instead of 150. Note : since I moved X from inner left thumb key, this change might not be a good idea anymore.
+            flavor = "balanced";
+            bindings = <&kp>, <&kp>;
+            hold-trigger-key-positions = <KEYS_L THUMBS_L>;
+            hold-trigger-on-release;
+        };
+        cwl: caps_word_layer {
+            compatible = "zmk,behavior-hold-tap";
+            label = "CAPS WORD LAYER";
+            #binding-cells = <2>;
+            tapping-term-ms = <260>;
+            //quick-tap-ms = <0>;
+            flavor = "tap-preferred";
+            bindings = <&mo>, <&caps_word>;
+        };
     };
 
+/*                KEY POSITIONS
 
-        keymap {
-                compatible = "zmk,keymap";
+  ╭────────────────────────╮ ╭────────────────────────╮
+  │  0   1   2   3   4   5 │ │  6   7   8   9  10  11 │
+  │ 12  13  14  15  16  17 │ │ 18  19  20  21  22  23 │
+  │ 24  25  26  27  28  29 │ │ 30  31  32  33  34  35 │
+  ╰───────────╮ 36  37  38 │ │ 39  40  41 ╭───────────╯
+              ╰────────────╯ ╰────────────╯            */
 
-#ifdef QWERTY_BASE
-        qwerty_layer {
-            label = "Qwerty";
-            bindings = <
-       &none        &kp Q      &kp W      &kp E       &kp R          &kp T         &kp Y            &kp U          &kp I       &kp O      &kp P    &none
-       &none        &kp A      &kp S      &kp D       &kp F          &kp G         &kp H            &kp J          &kp K       &kp L      &kp QUOT &none
-       &none        &kp Z      &kp X      &kp C       &kp V          &kp B         &kp N            &kp M          &kp COMMA   &kp DOT    &kp SEMI &none
-                                          &none   &mo NAV_L      &shifty      &kp SPACE  &mo NUM_L &none
-            >;
-        };
-#else
-        colemak_dhm_layer {
-            label = "Base";
-            bindings = <
-       &none        &kp Q      &kp W      &kp F       &kp P          &kp B         &kp J            &kp L          &kp U       &kp Y      &kp QUOT &none
-       &none        &kp A      &kp R      &kp S       &kp T          &kp G         &kp M            &kp N          &kp E       &kp I      &kp O    &none
-       &none        &kp Z      &kp X      &kp C       &kp D          &kp V         &kp K            &kp H          &kp COMMA   &kp DOT    &kp SEMI &none     
-                                          &none       &mo NAV_L      &shifty      &kp SPACE        &mo NUM_L &none
-            >;
-        };
-#endif
+    keymap {
+        compatible = "zmk,keymap";
 
-        nav_layer {
-            label = "Nav";
+        default_layer {
+        label = "OPTIM";
+// ------------------- --------------------------------------------------------------------------------------------------
+// |  TAB  |  À  |  J  |    O   |   É   |   B     |                   |  ^      |  V     |  D    |  L   |   J   | BKSPC |
+// | LSHFT |  A  |  U  |    I   |   E   |   ,     |                   |  C      |  T     |  S    |  R   |   N   |   M   |
+// |MISSCTRL|  À  |  Y  |    X   |   .   |   K     |                   |  '      |  Q     |  G    |  H   |   F   |   Ç   |
+//                     | LOWER/ | TAB / | CMD/ENTER |                   | NUMBER/ | RAISE/ | RC+SPC|
+//                     | CLPBD H| LSHFT |                             | SPACE   |  W     | 
             bindings = <
-       &none         &trans     &trans     &trans      &trans          &trans       &kp GRAVE        &kp TAB        &kp GRAVE   &kp BKSP   &kp DEL &none
-       &none         &sk LSHFT  &sk LALT   &sk LCTRL   &sk LGUI        &trans       &kp TAB          &kp LARW       &kp DARW    &kp UARW   &kp RARW &none
-       &none         &trans     &trans     &trans      &trans          &trans       &trans           &kp HOME       &kp PG_DN   &kp PG_UP  &kp END &none
-                                           &none  &trans          &trans       &kp RET          &trans &none
+&kp TAB        &kp Q        &kp W        &kp E               &kp R         &kp T                          &kp Y             &kp U        &kp I                &kp O        &kp P    &kp BSPC
+&kp LSHFT      &hll ARROW A &hml LCTRL S &hml LALT D         &hml LGUI F   &kp G                          &kp H             &hmr RGUI J  &hmr RALT K          &hmr RCTRL L &kp SEMI &kp SQT
+&kp F10        &kp Z        &kp X        &kp C               &kp V         &hll SCREEN B                  &kp N             &kp M        &kp COMMA            &kp DOT      &kp FSLH &kp RBKT
+                                         &lt LOWER LG(LA(H)) &hsl LSHFT N9 &mt LGUI SPACE                 &lt NUMBERS SPACE &lt RAISE N0 &hsr RSHFT RC(SPACE)
+
+            //code pour utiler Caps_Word : &cwl RAISE 0 (pas adapté à Optimot au 04/07/2022; les keycodes Qwerty sont pris en compte, et même si on peut
+            // faire en sorte que certains keycodes ne désactivent pas Caps, je ne vois pas pour le moment comment faire pour que des keycodes
+            // qwerty de lettres et qui sont par exemple , ou . en optimot puissent désactiver CAPS au lieu de le laisser actif).
+            // Update : PeteJohansson m'a recommande d'ouvrir une issue sur le github avec mes propositions. À faire éventuellement quand j'aurai du temps.
             >;
         };
 
-        num_layer {
-            label = "Num";
-            bindings = <
-       &none         &kp ESC   &kp N7     &kp N8      &kp N9          &kp RBKT      &trans        &trans         &trans      &trans     &trans &none
-       &none         &kp MINUS  &kp N4     &kp N5      &kp N6          &kp EQUAL     &trans        &sk LGUI       &sk LCTRL      &sk LALT     &sk LSHFT &none
-       &none         &kp PLUS  &kp N1     &kp N2      &kp N3          &kp N0        &bt BT_SEL 0  &bt BT_SEL 1   &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4 &none
-                                          &none   &trans          &trans        &trans        &trans &none
+        lower_layer {
+        label = "LOWER";
+// ----------------------------------------------------------------------------------------------------------------
+// | ESC   |  F1 |  F2 |  F3  |  F4      |  F5  |                   |   6  |   7   |   8   |   9  |    0  |  F12  |
+// |   F6  |  F7 |  F8 |  F9  |  F10     |  F11 |                   |  ^   |  &    |  *    |  (   |   )   |   |   |
+// |       |  =  |  -  |  +   |DoNotDist |  F12 |                   |  [   |  ]    |  ;    |  :   |   \   |       |
+//               |     |      |          |      |                   |      |       |       |      |
+            bindings = <                       
+&kp ESC &kp F1 &kp F2 &kp F3 &kp F4      &kp F5               &kp LA(LC(LS(Y)))        &kp LA(LC(LS(U)))        &kp LA(LC(LS(I)))         &kp LA(LC(LS(O)))    &none                        &kp F12
+&kp F6  &kp F7 &kp F8 &kp F9 &kp F10     &kp F11              &kp LA(LC(LS(H)))        &kp LA(LC(LS(LEFT)))     &kp LA(LC(LS(UP)))        &kp LA(LC(LS(DOWN))) &kp LA(LC(LS(RIGHT))) &kp LS(LA(LC(LG(N))))
+&kp F3  &none  &none  &none  &kp LG(F12) &kp F12              &kp LA(LC(LS(N)))        &kp LC(LG(P))            &kp LA(LC(LS(COMMA)))     &kp LA(LC(LS(DOT)))  &none                        &kp LS(LA(LC(LG(U))))
+                      &trans &trans      &trans               &kp LG(LA(LC(LS(LEFT)))) &kp LG(LA(LC(LS(DOWN)))) &kp LG(LA(LC(LS(RIGHT))))      
             >;
         };
 
-        media_layer {
-            label = "Media";
-            bindings = <
-       &none         &trans	   &trans     &trans      &trans          &trans       &trans           &kp C_PREV     &kp C_VOL_DN     &kp C_VOL_UP &kp C_NEXT &none
-       &none         &trans     &trans     &trans      &trans          &trans       &trans           &trans         &trans           &trans       &trans &none
-       &none         &trans     &trans     &trans      &trans          &trans       &trans           &trans         &kp C_PLAY_PAUSE &kp C_MUTE       &trans &none
-                                           &none  &trans          &trans       &trans           &trans &none
+        raise_layer {
+        label = "RAISE";
+// -----------------------------------------------------------------------------------------------------------------------------------------------------------
+// |                     |NewOmniFocTaskFromTxt| HOME       | MouseUP      |  END       |Spotlight|             |      |      |       |      |       |       |
+// |NewOmniFocTaskFromTxt| INS                 | Mouseleft  | MouseDwn     | MouseRght  |      |                | PGUP |      |   ^   |      |       | OutlkNewMainWindow|
+// |AppsForceQuit        | FileMailOutlook     | HookCpyLk  | HookCpyMDLk  | HookToLink |      |                |      |      |       |      |       |       |
+//                                                          |              |            | Hook |                |      |      |       |
+            bindings = <    
+&kp ESC               &kp LA(LC(LG(LS(R)))) &kp HOME              &mmv MOVE_VERT(-5000) &kp END               &kp LA(LC(LS(SPACE)))               &kp C_MUTE &kp C_VOL_DN        &kp C_VOL_UP          &kp LG(COMMA)        &none                &trans
+&kp LA(LC(LG(LS(R)))) &kp RA(RG(G))         &mmv MOVE_HOR(-5000)  &mmv MOVE_VERT(5000)  &mmv MOVE_HOR(5000)   &kp LC(LS(SPACE))                   &kp PG_UP  &mkp LCLK           &mkp RCLK             &kp LG(LS(COMMA))    &none                &kp LA(LG(SEMI))
+&kp LA(LG(ESC))       &kp LC(D)             &kp LG(LC(LA(SPACE))) &kp LS(LA(LG(SPACE))) &kp LC(LS(LG(SPACE))) &kp LC(LG(SPACE))                   &kp PG_DN  &mwh SCROLL_HOR(15) &mwh SCROLL_VERT(-15) &mwh SCROLL_VERT(15) &mwh SCROLL_HOR(-15) &none
+                                                                  &trans                &trans                &kp LG(LS(SPACE))                   &trans     &trans              &trans  
             >;
         };
 
-
-		/*
-                default_layer {
-// -------------------------------------------------------------------------------------
-// |  TAB |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P  |   BKSP    |
-// | CTRL |  A  |  S  |  D  |  F  |  G  |   |  H  |  J   |  K  |  L  |  ;  |    '      |
-// | SHFT |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  | SHFT(RET) |
-//                         | ALT | LWR | SPC | RSE  | ALT |
+        arrow_layer {
+        label = "ARROW";
+// ----------------------------------------------------------------------------------------------------------------------------------------------------------------
+// | TO 0  | none| LeftDesk | RightDesk    | WkfyMirror  |  BSPC         |                   |  todo   |  todo    |  todo    |  todo     |  todo    |  todo       |
+// | Trans |Trans|          |              |             |  HookCpyMDLk  |                   |  #   |  Left  |  UP    |  Down   | Right   |  None      |
+// | RESET  |     |          | WkfyNormSize |  WkfySmall  |  WkfyBigger   |                   |  ??ê?? |  $/€   |WkfyMvUP|WkfyMvDwn|TxTXSearch|TxTXDisable|
+//                          |              |   LSHFT     |  CMD/return   |                   |  SPC | }|WkfyNext|
             bindings = <
-&bl BL_TOG &kp Q      &kp W      &kp F       &kp P          &kp B         &kp J            &kp L          &kp U       &kp Y      &kp QUOT &bootloader
-&none &hm LGUI A &hm LALT R &hm LCTRL S &hm LSHFT T    &kp G         &kp M            &hm RSHFT N    &hm RCTRL E &hm LALT I &hm LGUI O &none
-&none &kp Z      &kp X      &kp C       &kp D          &kp V         &kp K            &kp H          &kp COMMA   &kp DOT    &kp FSLH      &none
-                                  &lt NAV_L TAB  &lt OTH_L RET &kp RET &lt NUM_L SPACE  &lt SYM_L BKSP
-            >;
-                };
-
-        nav_layer {
-            label = "Nav";
-            bindings = <
-&none                 &trans     &trans     &trans      &trans          &trans       &trans           &trans         &trans      &trans     &trans &none
-&none                 &trans     &trans     &trans      &trans          &trans       &trans           &kp LARW       &kp DARW    &kp UARW   &kp RARW &none
-&none                 &trans     &trans     &trans      &trans          &trans       &trans           &kp HOME       &kp PG_DN   &kp PG_UP  &kp END &none
-                                                  &trans          &trans    &trans    &kp ESC          &kp DEL
+&to 0  &none     &none        &none         &kp  LG(LS(COMMA))  &kp BSPC                       &kp MINUS            &kp LG(LS(N8)) &kp LC(LS(TAB))  &kp LC(TAB)      &none             &kp BSPC
+&trans &trans    &kp LCTRL    &kp LALT      &kp  LGUI           &kp LS(LA(LG(SPACE)))          &kp EQUAL            &kp LEFT       &kp UP           &kp DOWN         &kp RIGHT         &none
+&reset &none     &none        &kp LG(MINUS) &kp  LG(EQUAL)      &kp LG(KP_N0)                  &kp NON_US_BACKSLASH &kp GRAVE      &kp RG(RS(UP))   &kp RG(RS(DOWN)) &kp RG(LS(LA(Y))) &kp RA(RC(RG(J)))
+                              &kp LG(LA(H)) &hsl LSHFT LA(OP_D) &trans                         &hmr RSHFT SPACE     &kp LA(OP_L)   &kp LA(LS(OP_COMM))
             >;
         };
 
-        other_layer {
-            label = "Other";
-            bindings = <
-&none                 &trans	   &trans     &trans      &trans          &trans       &trans           &trans         &trans       &trans       &bt BT_CLR &none
-&none                 &trans     &trans     &trans      &trans          &trans       &trans           &trans         &trans       &trans       &trans &none
-&none                 &trans     &trans     &trans      &trans          &trans       &bt BT_SEL 0     &bt BT_SEL 1   &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4 &none
-                                                  &trans          &trans   &trans     &trans           &trans
+        numbers_layer {
+        label = "NUMBERS";
+// ------------------------------------------------------------------------------------------------------------
+// | TAB   |  «° |  °» |  "   |  -   |  +      |                   |  *   |  /    |  =    |  (   |   )   |  BSPC |
+// | LSHFT |   1 |   2 |   3  |   4  |   5     |                   |   6  |   7   |   8   |   9  |    0  |   @/_ |
+// | F10   | ??ê?? |  ;  |  :   |  .   |   &     |                   |  ,   |   No  |   No  |   H   |   No  |   #/% |
+//                     | LCTRL| LALT |CMD/space|                   | togg | RCTRL | RALT  |
+            bindings = <            
+&kp ESC        &kp N1    &kp N2    &kp N3    &kp N4    &kp N5                    &kp N6    &kp N7    &kp N8    &kp N9    &kp N0    &kp BSPC
+&hsl LSHFT CAPS &kp KP_N1 &kp KP_N2 &kp KP_N3 &kp KP_N4 &kp KP_N5                 &kp KP_N6 &kp KP_N7 &kp KP_N8 &kp KP_N9 &kp KP_N0 &kp MINUS
+&trans         &kp GRAVE &kp LS(G) &kp LS(V) &trans    &kp LA(J)                 &kp G     &none     &none     &trans    &none     &kp EQUAL
+                                   &kp LCTRL &kp LALT  &mt LGUI SPACE            &trans    &kp RCTRL &kp RALT
             >;
         };
 
-        num_layer {
-            label = "Num";
+         screen_layer {
+         label = "SCREEN";
+// TODO: Some binds are waiting for shifted keycode support.
+// ------------------------------------------------------------------------------------------------------------
+// |       |  F1 |  F2 |  F3  |  F4  |  F5  |                   |  F6  |  F7   |  F8   |  F9  |  F10  |  F11  |
+// | `     |   1 |   2 |   3  |   4  |   5  |                   |   6  |   7   |   8   |   9  |    0  |  F12  |
+// |       |  !  |  @  |  #   |  $   |  %   |                   |  ^   |  &    |  *    |  (   |   )   |   |   |
+// |       |  =  |  -  |  +   |  {   |  }   |        |  |       |  [   |  ]    |  ;    |  :   |   \   |       |
+//               |     |      |      |      |        |  |       |      |       |       |      |
             bindings = <
-&none                 &kp LBKT   &kp N7     &kp N8      &kp N9          &kp RBKT      &trans          &trans         &trans      &trans     &trans &none
-&none                 &kp SEMI   &kp N4     &kp N5      &kp N6          &kp EQUAL     &trans          &trans         &trans      &trans     &trans &none
-&none                 &kp GRAVE  &kp N1     &kp N2      &kp N3          &kp BSLH      &trans          &trans         &trans      &trans     &trans &none
-                                                  &kp N0          &kp MINUS   &trans   &trans          &trans
+&none &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4                 &kp LC(LS(O))     &kp C_PREV         &kp C_PP       &kp C_NEXT         &trans         &trans
+&none &none        &none        &none        &none        &none                        &kp LC(LS(S))     &kp LG(LC(LS(N4))) &kp LG(LS(N4)) &kp LG(LC(LS(N3))) &kp LG(LS(N3)) &trans
+&none &none        &none        &none        &none        &trans                       &kp LG(LS(COMMA)) &kp LG(LS(N9))     &kp RG(RS(UP)) &kp RG(RS(DOWN))   &kp LG(LS(N0)) &trans
+                                &bt BT_CLR   &none        &bl BL_TOG                        &kp SPACE         &trans             &trans  
             >;
         };
-
-        sym_layer {
-            label = "Sym";
-            bindings = <
-&none                 &kp LBRC     &kp LS(N7)  &kp LS(N8)  &kp LS(N9) &kp RBRC        &trans &trans   &trans    &trans    &trans &none
-&none                 &kp COLON    &kp LS(N4)  &kp LS(N5)  &kp LS(N6) &kp PLUS        &trans &trans   &trans    &trans    &trans &none
-&none                 &kp TILDE    &kp LS(N1)  &kp LS(N2)  &kp LS(N3) &kp LS(BSLH)    &trans &trans   &trans    &trans    &trans &none
-                                                   &kp LS(N0) &kp UNDER      &trans    &trans &trans
-            >;
-        };
-	*/
-
-        };
+   };
 };

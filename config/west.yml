@@ -2,12 +2,12 @@ manifest:
   remotes:
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
-    - name: petejohanson
-      url-base: https://github.com/petejohanson
+    - name: kikangh
+      url-base: https://github.com/Kikangh
   projects:
     - name: zmk
-      remote: zmkfirmware
-      revision: main
+      remote: kikangh
+      revision: CiZ_V2-HM-Mouse-Display
       import: app/west.yml
   self:
     path: config
