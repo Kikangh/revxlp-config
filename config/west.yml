@@ -7,7 +7,7 @@ manifest:
   projects:
     - name: zmk
       remote: kikangh
-      revision: CiZ_V2-HM-Mouse-Display
+      revision: Revxlp-Mouse-HM_tweaks
       import: app/west.yml
   self:
     path: config
