@@ -77,7 +77,7 @@
             compatible = "zmk,behavior-hold-tap";
             label = "HOMEROW_LAYER_L";
             #binding-cells = <2>;
-            tapping-term-ms = <200>;
+            tapping-term-ms = <400>;
             quick-tap-ms = <150>; //trying to see what gives with 0 instead of 150
             flavor = "tap-preferred";
             bindings = <&mo>, <&kp>;
@@ -132,17 +132,17 @@
 
         default_layer {
         label = "OPTIM";
-// ------------------- --------------------------------------------------------------------------------------------------
-// |  TAB  |  À  |  J  |    O   |   É   |   B     |                   |  ^      |  V     |  D    |  L   |   J   | BKSPC |
-// | LSHFT |  A  |  U  |    I   |   E   |   ,     |                   |  C      |  T     |  S    |  R   |   N   |   M   |
-// |MISSCTRL|  À  |  Y  |    X   |   .   |   K     |                   |  '      |  Q     |  G    |  H   |   F   |   Ç   |
-//                     | LOWER/ | TAB / | CMD/ENTER |                   | NUMBER/ | RAISE/ | RC+SPC|
-//                     | CLPBD H| LSHFT |                             | SPACE   |  W     | 
+// ---------------------------------------------------------------------------------------------------------------------
+// |  TAB   |  À  |  J  |    O     |   É   |     B     |                   |  ^      |  V     |  D    |  L   |   J   | BKSPC |
+// | LSHFT  |  A  |  I  |    E     |   U   |     ,     |                   |  C      |  T     |  S    |  R   |   N   |   M   |
+// |MISSCTRL|  K  |  Y  |    È     |   .   |     W     |                   |  '      |  Q     |  G    |  H   |   F   |   Ç   |
+//                     | LOWER /   |   X / | CMD/ENTER |                   | NUMBER/ | RAISE/ | RC+SPC|
+//                     | CLPBD HIST| LSHFT |                             | SPACE   |  W     | 
             bindings = <
-&kp TAB        &kp Q        &kp W        &kp E               &kp R         &kp T                          &kp Y             &kp U          &kp I                &kp O        &kp P    &kp BSPC
-&kp LSHFT      &hll ARROW A &hml LCTRL S &hml LALT D         &hml LGUI F   &kp G                          &kp H             &hmr RGUI J    &hmr RALT K          &hmr RCTRL L &kp SEMI &kp SQT
-&kp F10        &kp Z        &kp X        &kp C               &kp V         &hll SCREEN B                  &kp N             &hsl RSHFT M   &kp COMMA            &kp DOT      &kp FSLH &kp RBKT
-                                         &lt LOWER LG(LA(H)) &hsl LSHFT OP_X &mt LGUI SPACE               &lt NUMBERS SPACE &lt RAISE OP_Z &hsr RSHFT RC(SPACE)
+&kp TAB   &kp OP_AGRV  &kp OP_J        &kp OP_O            &kp OP_EACU     &kp OP_B                 &kp OP_F          &kp OP_D         &kp OP_L             &kp OP_QUOT     &kp OP_Q &kp BSPC
+&kp LSHFT &hll ARROW A &hml LCTRL OP_I &hml LALT OP_E      &hml LGUI OP_U  &kp OP_COMM              &kp OP_P          &hmr RGUI OP_T   &hmr RALT OP_S       &hmr RCTRL OP_R &kp OP_N &kp OP_CIR
+&kp F10   &kp OP_K     &kp OP_Y        &kp OP_EGRV         &kp OP_DOT      &hll SCREEN OP_W         &kp OP_G          &hsl RSHFT OP_C  &kp OP_M             &kp OP_H        &kp OP_V &kp RBKT
+                                       &lt LOWER LG(LA(H)) &hsl LSHFT OP_X &mt LGUI SPACE           &lt NUMBERS SPACE &lt RAISE OP_Z   &hsr RSHFT RC(SPACE)
 
             //code pour utiler Caps_Word : &cwl RAISE 0 (pas adapté à Optimot au 04/07/2022; les keycodes Qwerty sont pris en compte, et même si on peut
             // faire en sorte que certains keycodes ne désactivent pas Caps, je ne vois pas pour le moment comment faire pour que des keycodes
@@ -159,9 +159,9 @@
 // |       |  =  |  -  |  +   |DoNotDist |  F12 |                   |  [   |  ]    |  ;    |  :   |   \   |       |
 //               |     |      |          |      |                   |      |       |       |      |
             bindings = <                       
-&kp ESC &kp F1 &kp F2 &kp F3 &kp F4      &kp F5               &kp LA(LC(LS(Y)))        &kp LA(LC(LS(U)))        &kp LA(LC(LS(I)))         &kp LA(LC(LS(O)))    &none                 &kp F12
-&kp F6  &kp F7 &kp F8 &kp F9 &kp F10     &kp F11              &kp LA(LC(LS(H)))        &kp LA(LC(LS(LEFT)))     &kp LA(LC(LS(UP)))        &kp LA(LC(LS(DOWN))) &kp LA(LC(LS(RIGHT))) &kp LS(LA(LC(LG(N))))
-&kp F3  &none  &none  &none  &kp LG(F12) &kp F12              &kp LA(LC(LS(N)))        &kp LC(LG(P))            &kp LA(LC(LS(COMMA)))     &kp LA(LC(LS(DOT)))  &none                 &kp LS(LA(LC(LG(U))))
+&kp ESC &kp F1 &kp F2 &kp F3 &kp F4      &kp F5               &kp LA(LC(LS(OP_F)))     &kp LA(LC(LS(OP_D)))     &kp LA(LC(LS(OP_L)))      &kp LA(LC(LS(OP_QUOT))) &none                 &kp F12
+&kp F6  &kp F7 &kp F8 &kp F9 &kp F10     &kp F11              &kp LA(LC(LS(OP_P)))     &kp LA(LC(LS(LEFT)))     &kp LA(LC(LS(UP)))        &kp LA(LC(LS(DOWN)))    &kp LA(LC(LS(RIGHT))) &kp LS(LA(LC(LG(OP_G))))
+&kp F3  &none  &none  &none  &kp LG(F12) &kp F12              &kp LA(LC(LS(OP_G)))     &kp LC(LG(OP_Q))         &kp LA(LC(LS(OP_M)))      &kp LA(LC(LS(OP_H)))    &none                 &kp LS(LA(LC(LG(OP_D))))
                       &trans &trans      &trans               &kp LG(LA(LC(LS(LEFT)))) &kp LG(LA(LC(LS(DOWN)))) &kp LG(LA(LC(LS(RIGHT))))      
             >;
         };
@@ -189,10 +189,10 @@
 // | RESET  |     |          | WkfyNormSize |  WkfySmall  |  WkfyBigger   |                   |  ??ê?? |  $/€   |WkfyMvUP|WkfyMvDwn|TxTXSearch|TxTXDisable|
 //                          |              |   LSHFT     |  CMD/return   |                   |  SPC | }|WkfyNext|
             bindings = <
-&to 0       &none     &none        &none         &kp  LG(LS(COMMA))  &kp BSPC                       &kp MINUS            &kp LG(LS(N8)) &kp LC(LS(TAB))     &kp LC(TAB)      &none             &kp BSPC
-&trans      &trans    &kp LCTRL    &kp LALT      &kp  LGUI           &kp LS(LA(LG(SPACE)))          &kp EQUAL            &kp LEFT       &kp UP              &kp DOWN         &kp RIGHT         &none
-&bootloader &none     &none        &kp LG(MINUS) &kp  LG(EQUAL)      &kp LG(KP_N0)                  &kp NON_US_BACKSLASH &kp GRAVE      &kp RG(RS(UP))      &kp RG(RS(DOWN)) &kp RG(LS(LA(Y))) &kp RA(RC(RG(J)))
-                                   &kp LG(LA(H)) &hsl LSHFT LA(OP_D) &trans                         &hmr RSHFT SPACE     &kp LA(OP_L)   &kp LA(LS(OP_COMM))
+&to 0       &none     &none     &none         &kp  LG(LS(COMMA))  &kp BSPC                       &kp MINUS            &kp LG(LS(N8)) &kp LC(LS(TAB))     &kp LC(TAB)      &none             &kp BSPC
+&trans      &trans    &kp LCTRL &kp LALT      &kp  LGUI           &kp LS(LA(LG(SPACE)))          &kp EQUAL            &kp LEFT       &kp UP              &kp DOWN         &kp RIGHT         &none
+&bootloader &none     &none     &kp LG(MINUS) &kp  LG(EQUAL)      &kp LG(KP_N0)                  &kp NON_US_BACKSLASH &kp GRAVE      &kp RG(RS(UP))      &kp RG(RS(DOWN)) &kp RG(LS(LA(Y))) &kp RA(RC(RG(J)))
+                                &kp LG(LA(H)) &hsl LSHFT LA(OP_D) &trans                         &hmr RSHFT SPACE     &kp LA(OP_L)   &kp LA(LS(OP_COMM))
             >;
         };
 
