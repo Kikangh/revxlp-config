@@ -141,7 +141,7 @@
             bindings = <
 &kp TAB   &kp OP_AGRV  &kp OP_J        &kp OP_O            &kp OP_EACU     &kp OP_B                 &kp OP_F          &kp OP_D         &kp OP_L             &kp OP_QUOT     &kp OP_Q &kp BSPC
 &kp LSHFT &hll ARROW A &hml LCTRL OP_I &hml LALT OP_E      &hml LGUI OP_U  &kp OP_COMM              &kp OP_P          &hmr RGUI OP_T   &hmr RALT OP_S       &hmr RCTRL OP_R &kp OP_N &kp OP_CIR
-&kp F10   &kp OP_K     &kp OP_Y        &kp OP_EGRV         &kp OP_DOT      &hll SCREEN OP_W         &kp OP_G          &hsl RSHFT OP_C  &kp OP_M             &kp OP_H        &kp OP_V &kp RBKT
+&kp F10   &kp OP_K     &kp OP_Y        &kp OP_EGRV         &kp OP_DOT      &hll SCREEN OP_W         &kp OP_G          &hsr RSHFT OP_C  &kp OP_M             &kp OP_H        &kp OP_V &kp RBKT
                                        &lt LOWER LG(LA(H)) &hsl LSHFT OP_X &mt LGUI SPACE           &lt NUMBERS SPACE &lt RAISE OP_Z   &hsr RSHFT RC(SPACE)
 
             //code pour utiler Caps_Word : &cwl RAISE 0 (pas adapté à Optimot au 04/07/2022; les keycodes Qwerty sont pris en compte, et même si on peut
@@ -186,13 +186,13 @@
 // ----------------------------------------------------------------------------------------------------------------------------------------------------------------
 // | TO 0  | none| LeftDesk | RightDesk    | WkfyMirror  |  BSPC         |                   |  todo   |  todo    |  todo    |  todo     |  todo    |  todo       |
 // | Trans |Trans|          |              |             |  HookCpyMDLk  |                   |  #   |  Left  |  UP    |  Down   | Right   |  None      |
-// | RESET  |     |          | WkfyNormSize |  WkfySmall  |  WkfyBigger   |                   |  ??ê?? |  $/€   |WkfyMvUP|WkfyMvDwn|TxTXSearch|TxTXDisable|
-//                          |              |   LSHFT     |  CMD/return   |                   |  SPC | }|WkfyNext|
+// | RESET |     |          | WkfyNormSize |  WkfySmall  |  WkfyBigger   |                   |  ??ê?? |  $/€   |WkfyMvUP|WkfyMvDwn|TxTXSearch|TxTXDisable|
+//                          |              |   LSHFT     |  CMD/return   |                   |  SPC |WkfyPrev|WkfyNext|
             bindings = <
-&to 0       &none     &none     &none         &kp  LG(LS(COMMA))  &kp BSPC                       &kp MINUS            &kp LG(LS(N8)) &kp LC(LS(TAB))     &kp LC(TAB)      &none             &kp BSPC
-&trans      &trans    &kp LCTRL &kp LALT      &kp  LGUI           &kp LS(LA(LG(SPACE)))          &kp EQUAL            &kp LEFT       &kp UP              &kp DOWN         &kp RIGHT         &none
-&bootloader &none     &none     &kp LG(MINUS) &kp  LG(EQUAL)      &kp LG(KP_N0)                  &kp NON_US_BACKSLASH &kp GRAVE      &kp RG(RS(UP))      &kp RG(RS(DOWN)) &kp RG(LS(LA(Y))) &kp RA(RC(RG(J)))
-                                &kp LG(LA(H)) &hsl LSHFT LA(OP_D) &trans                         &hmr RSHFT SPACE     &kp LA(OP_L)   &kp LA(LS(OP_COMM))
+&to 0       &none     &none     &none         &kp  LG(LS(COMMA)) &kp BSPC                       &kp OP_AT            &kp LG(LS(N8)) &kp LC(LS(TAB))     &kp LC(TAB)      &none             &kp BSPC
+&trans      &trans    &kp LCTRL &kp LALT      &kp  LGUI          &kp LS(LA(LG(SPACE)))          &kp OP_HASH          &kp LEFT       &kp UP              &kp DOWN         &kp RIGHT         &none
+&bootloader &none     &none     &kp LG(MINUS) &kp  LG(EQUAL)     &kp LG(KP_N0)                  &kp NON_US_BACKSLASH &kp GRAVE      &kp RG(RS(UP))      &kp RG(RS(DOWN)) &kp RG(LS(LA(Y))) &kp RA(RC(RG(J)))
+                                &kp LC(LEFT)  &hsl LSHFT HOME    &trans                         &hmr RSHFT SPACE     &kp END        &kp LC(RIGHT)
             >;
         };
 
