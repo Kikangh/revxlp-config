@@ -63,6 +63,6 @@ COMBO(omnipl-identl3, &kp LG(LS(N9)),   28 29,         ARROW, 50, 100) // Also w
 
 // Escape combos
 COMBO(esc,           &kp ESC,        26 27 28,   0 1 2 3 4 5, 50, 100)
-COMBO(esc2,          &kp ESC,            1  1,   0 1 2 3 4 5, 50, 100)
+COMBO(esc2,          &kp ESC,            0  1,   0 1 2 3 4 5, 50, 100)
     };
 };
