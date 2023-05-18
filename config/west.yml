@@ -1,7 +1,7 @@
 manifest:
   remotes:
     - name: zmkfirmware
-      url-base: https://github.com/zmkfirmware
+      url-base: https://github.com/zmkfirmware/zmk/commit/6e7c2a08a26d011512edb76d63c6f96ff081e0be
     - name: kikangh
       url-base: https://github.com/Kikangh
   projects:
