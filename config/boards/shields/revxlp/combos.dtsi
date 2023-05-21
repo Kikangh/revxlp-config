@@ -31,7 +31,7 @@ COMBO(stab,       &kp LS(TAB),          18 19,         OPTIM NUMBERS, 50, 100)
 // Shift Combo
 
 // Letters combos
-COMBO(op_cced,    &kp OP_CCED,         20, 32,         OPTIM, 50, 100)
+COMBO(op_cced,    &kp OP_CCED,          20 32,         OPTIM, 50, 100)
 
 // Characters combo
 COMBO(underscore, &kp OP_UNDS,          30 31,         OPTIM, 50, 100)
