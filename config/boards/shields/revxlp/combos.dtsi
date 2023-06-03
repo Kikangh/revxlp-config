@@ -52,8 +52,8 @@ COMBO(op-redo,    &kp LG(LS(BSLH)),     15 27,         OPTIM, 50, 100)
 
 // Windows Management combos
 COMBO(cmd-tab,    &kp LG(TAB),          28 29,         OPTIM, 50, 100) // try to replace by swapper in keymap, but not yet functionning.
-COMBO(space-l,    &kp LC(LEFT),         36 37,         OPTIM, 50, 100)
-COMBO(space-r,    &kp LC(RIGHT),        40 41,         OPTIM, 50, 100)
+//COMBO(space-l,    &kp LC(LEFT),         36 37,         OPTIM, 50, 100)
+//COMBO(space-r,    &kp LC(RIGHT),        40 41,         OPTIM, 50, 100)
 
 
 // Application specifics shorcuts
