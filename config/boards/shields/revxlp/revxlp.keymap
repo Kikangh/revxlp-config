@@ -66,12 +66,12 @@
             compatible = "zmk,behavior-hold-tap";
             label = "ALPHA_SFT_L";
             #binding-cells = <2>;
-            tapping-term-ms = <300>;
+            tapping-term-ms = <200>;
             quick-tap-ms = <150>;
-            flavor = "balanced";
+            flavor = "hold-preferred";
             bindings = <&kp>, <&kp>;
             hold-trigger-key-positions = <KEYS_R KEYS_L THUMBS_L>;
-            hold-trigger-on-release;
+            //hold-trigger-on-release;
         };
         hll: homerow_layer_l {
             compatible = "zmk,behavior-hold-tap";
