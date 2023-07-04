@@ -77,7 +77,7 @@
             compatible = "zmk,behavior-hold-tap";
             label = "HOMEROW_LAYER_L";
             #binding-cells = <2>;
-            tapping-term-ms = <300>;
+            tapping-term-ms = <200>; // switched from 300 to 200, getting too much "af" instead of "@" (layer not triggered)
             quick-tap-ms = <150>; //trying to see what gives with 0 instead of 150 => not kept.
             flavor = "tap-preferred";
             bindings = <&mo>, <&kp>;
@@ -184,9 +184,9 @@
         arrow_layer {
         label = "ARROW";
 // ----------------------------------------------------------------------------------------------------------------------------------------------------------------
-// | TO 0  | none| LeftDesk | RightDesk    | WkfyMirror  |  BSPC         |                   |  todo   |  todo    |  todo    |  todo     |  todo    |  todo       |
+// | TO 0  | none| none     | none         | WkfyMirror  |  BSPC         |                   |  todo   |  todo    |  todo    |  todo     |  todo    |  todo       |
 // | Trans |Trans|          |              |             |  HookCpyMDLk  |                   |  #   |  Left  |  UP    |  Down   | Right   |  None      |
-// | RESET |     |          | WkfyNormSize |  WkfySmall  |  WkfyBigger   |                   |  ??ê?? |  $/€   |WkfyMvUP|WkfyMvDwn|TxTXSearch|TxTXDisable|
+// | RESET |     |          | Zoom -       | Zoom +      |  Zoom reset   |                   |  ??ê?? |  $/€   |WkfyMvUP|WkfyMvDwn|TxTXSearch|TxTXDisable|
 //                          |              |   LSHFT     |  CMD/return   |                   |  SPC |WkfyPrev|WkfyNext|
             bindings = <
 &to 0       &none     &none     &none         &kp  LG(LS(COMMA)) &kp BSPC                       &kp OP_AT            &kp LG(LS(N8)) &kp LC(LS(TAB))     &kp LC(TAB)      &none             &kp BSPC
