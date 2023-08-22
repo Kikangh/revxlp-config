@@ -174,10 +174,10 @@
 // |AppsForceQuit        | FileMailOutlook     | HookCpyLk  | HookCpyMDLk  | HookToLink |      |                |      |      |       |      |       |       |
 //                                                          |              |            | Hook |                |      |      |       |
             bindings = <    
-&kp ESC               &kp LA(LC(LG(LS(R)))) &kp HOME              &mmv MOVE_VERT(-5000) &kp END               &kp LA(LC(LS(SPACE)))               &kp C_MUTE &kp C_VOL_DN        &kp C_VOL_UP          &kp LG(COMMA)        &none                &trans
-&kp LA(LC(LG(LS(R)))) &kp RA(RG(G))         &mmv MOVE_HOR(-5000)  &mmv MOVE_VERT(5000)  &mmv MOVE_HOR(5000)   &kp LC(LS(SPACE))                   &kp PG_UP  &mkp LCLK           &mkp RCLK             &kp LG(LS(COMMA))    &none                &kp LA(LG(SEMI))
-&kp LA(LG(ESC))       &kp LC(D)             &kp LG(LC(LA(SPACE))) &kp LS(LA(LG(SPACE))) &kp LC(LS(LG(SPACE))) &kp LC(LG(SPACE))                   &kp PG_DN  &mwh SCROLL_HOR(15) &mwh SCROLL_VERT(-15) &mwh SCROLL_VERT(15) &mwh SCROLL_HOR(-15) &none
-                                                                  &trans                &trans                &kp LG(LS(SPACE))                   &trans     &trans              &trans  
+&kp ESC               &kp LA(LC(LG(LS(R)))) &kp LG(LEFT)          &mmv MOVE_VERT(-5000) &kp LG(RIGHT)         &kp LA(LC(LS(SPACE)))               &kp C_MUTE &kp C_VOL_DN        &kp C_VOL_UP          &kp LG(COMMA)        &none                &trans
+&kp HOME              &kp RA(RG(G))         &mmv MOVE_HOR(-5000)  &mmv MOVE_VERT(5000)  &mmv MOVE_HOR(5000)   &kp END                             &kp PG_UP  &mkp LCLK           &mkp RCLK             &kp LG(LS(COMMA))    &none                &kp LA(LG(SEMI))
+&kp LA(LG(ESC))       &kp LC(D)             &kp LG(MINUS)         &kp  LG(EQUAL)        &kp LG(KP_N0)         &kp LC(LG(SPACE))                   &kp PG_DN  &mwh SCROLL_HOR(15) &mwh SCROLL_VERT(-15) &mwh SCROLL_VERT(15) &mwh SCROLL_HOR(-15) &none
+                                                                  &trans                &trans                &trans                              &trans     &trans              &trans  
             >;
         };
 
@@ -189,10 +189,10 @@
 // | RESET |     |          | Zoom -       | Zoom +      |  Zoom reset   |                   |  ??ê?? |  $/€   |WkfyMvUP|WkfyMvDwn|TxTXSearch|TxTXDisable|
 //                          |              |   LSHFT     |  CMD/return   |                   |  SPC |WkfyPrev|WkfyNext|
             bindings = <
-&to 0       &none     &none     &none         &kp  LG(LS(COMMA)) &kp BSPC                       &kp OP_AT            &kp LG(LS(N8)) &kp LC(LS(TAB))     &kp LC(TAB)      &none             &kp BSPC
-&trans      &trans    &kp LCTRL &kp LALT      &kp  LGUI          &kp LS(LA(LG(SPACE)))          &kp OP_HASH          &kp LEFT       &kp UP              &kp DOWN         &kp RIGHT         &none
-&bootloader &none     &none     &kp LG(MINUS) &kp  LG(EQUAL)     &kp LG(KP_N0)                  &kp NON_US_BACKSLASH &kp GRAVE      &kp RG(RS(UP))      &kp RG(RS(DOWN)) &kp RG(LS(LA(Y))) &kp RA(RC(RG(J)))
-                                &kp LC(LEFT)  &hsl LSHFT HOME    &trans                         &hmr RSHFT SPACE     &kp END        &kp LC(RIGHT)
+&to 0       &none     &none                 &none                 &kp LG(LS(COMMA))     &kp BSPC                       &kp OP_AT            &kp LG(LS(N8)) &kp LC(LS(TAB))     &kp LC(TAB)      &none             &kp BSPC
+&trans      &trans    &kp LCTRL             &kp LALT              &kp LGUI              &kp LS(LA(LG(OP_P)))           &kp OP_HASH          &kp LEFT       &kp UP              &kp DOWN         &kp RIGHT         &none
+&bootloader &none     &kp LG(LC(LA(SPACE))) &kp LS(LA(LG(SPACE))) &kp LC(LS(LG(SPACE))) &kp LG(LS(SPACE))              &kp NON_US_BACKSLASH &kp GRAVE      &kp RG(RS(UP))      &kp RG(RS(DOWN)) &kp RG(LS(LA(Y))) &kp RA(RC(RG(J)))
+                                            &kp LC(LEFT)          &hsl LSHFT HOME       &trans                         &hmr RSHFT SPACE     &kp END        &kp LC(RIGHT)
             >;
         };
 
