@@ -31,7 +31,26 @@
 &mwh {    
         time-to-max-speed-ms = <2000>;
         acceleration-exponent=<0>;
-}; 
+};
+
+/ {
+    macros {
+        q_maj: q_maj {
+            label = "ZM_q_maj";
+            compatible = "zmk,behavior-macro";
+            wait-ms = <20>;
+            tap-ms = <20>;
+            #binding-cells = <0>;
+            bindings
+                = <&macro_tap &kp CAPS>
+                , <&macro_press &kp LSHFT>
+                , <&macro_tap &kp OP_Q>
+                , <&macro_release &kp LSHFT>
+                , <&macro_tap &kp CAPS>
+                ;
+        };
+    };
+};
 
 // Key position groups
 #define KEYS_L 0 1 2 3 4 5 12 13 14 15 16 17 24 25 26 27 28 29
@@ -189,7 +208,7 @@
 // | RESET |     |          | Zoom -       | Zoom +      |  Zoom reset   |                   |  ??ê?? |  $/€   |WkfyMvUP|WkfyMvDwn|TxTXSearch|TxTXDisable|
 //                          |              |   LSHFT     |  CMD/return   |                   |  SPC |WkfyPrev|WkfyNext|
             bindings = <
-&to 0       &none     &none                 &none                 &kp LG(LS(COMMA))     &kp BSPC                       &kp OP_AT            &kp LG(LS(N8)) &kp LC(LS(TAB))     &kp LC(TAB)      &none             &kp BSPC
+&to 0       &none     &none                 &none                 &kp LG(LS(COMMA))     &kp BSPC                       &kp OP_AT            &kp LG(LS(N8)) &kp LC(LS(TAB))     &kp LC(TAB)      &q_maj             &kp BSPC
 &trans      &trans    &kp LCTRL             &kp LALT              &kp LGUI              &kp LS(LA(LG(OP_P)))           &kp OP_HASH          &kp LEFT       &kp UP              &kp DOWN         &kp RIGHT         &none
 &bootloader &none     &kp LG(LC(LA(SPACE))) &kp LS(LA(LG(SPACE))) &kp LC(LS(LG(SPACE))) &kp LG(LS(SPACE))              &kp NON_US_BACKSLASH &kp GRAVE      &kp RG(RS(UP))      &kp RG(RS(DOWN)) &kp RG(LS(LA(Y))) &kp RA(RC(RG(J)))
                                             &kp LC(LEFT)          &hsl LSHFT HOME       &trans                         &hmr RSHFT SPACE     &kp END        &kp LC(RIGHT)
