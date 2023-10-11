@@ -89,7 +89,7 @@
             quick-tap-ms = <150>;
             flavor = "balanced";
             bindings = <&kp>, <&kp>;
-            global-quick-tap-ms = <200>;
+            global-quick-tap-ms = <150>;
             //require-prior-idle-ms = <125>;
             hold-trigger-key-positions = <KEYS_R THUMBS_R>;
             hold-trigger-on-release;
@@ -102,7 +102,7 @@
             quick-tap-ms = <150>;
             flavor = "balanced";
             bindings = <&kp>, <&kp>;
-            global-quick-tap-ms = <200>;
+            global-quick-tap-ms = <150>;
             //require-prior-idle-ms = <125>;
             hold-trigger-key-positions = <KEYS_L THUMBS_L>;
             hold-trigger-on-release;
