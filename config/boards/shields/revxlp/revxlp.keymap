@@ -225,7 +225,7 @@
 &to 0       &none     &none                 &none                 &kp LG(LS(COMMA))     &kp BSPC                       &kp OP_AT            &kp LS(LA(LG(N8))) &none         &none      &q_minuscule      &kp BSPC
 &trans      &trans    &kp LCTRL             &kp LALT              &kp LGUI              &kp LS(LA(LG(OP_P)))           &kp OP_HASH          &kp LEFT           &kp UP        &kp DOWN   &kp RIGHT         &q_maj
 &bootloader &none     &kp LG(LC(LA(SPACE))) &kp LS(LA(LG(SPACE))) &kp LC(LS(LG(SPACE))) &kp LG(LS(SPACE))              &kp NON_US_BACKSLASH &kp GRAVE          &kp PG_UP     &kp PG_DN  &kp RG(LS(LA(Y))) &kp RA(RC(RG(J)))
-                                            &kp LC(LEFT)          &hsl LSHFT HOME       &trans                         &hmr RSHFT SPACE     &kp END            &kp LC(RIGHT)
+                                            &trans                &trans                &trans                         &hmr RSHFT SPACE     &kp HOME           &kp END
             >;
         };
 
