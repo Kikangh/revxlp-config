@@ -7,7 +7,7 @@ manifest:
   projects:
     - name: zmk
       remote: kikangh
-      revision: Revxlp-Mouse-HM_tweaks
+      revision: Mouse-3.2
       import: app/west.yml
   self:
     path: config
