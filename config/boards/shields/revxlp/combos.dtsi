@@ -7,13 +7,13 @@
   ╰──────────╮  36  37  38 │ │ 39  40  41 ╭───────────╯
              ╰─────────────╯ ╰────────────╯            */
 
-#define COMBO(NAME, BINDINGS, KEYPOS, LAYERS, TERM, QUICKTAP) \
+#define COMBO(NAME, BINDINGS, KEYPOS, LAYERS, TERM, IDLE-MS) \
         combo_##NAME { \
             timeout-ms = <TERM>; \
             bindings = <BINDINGS>; \
             key-positions = <KEYPOS>; \
             layers = <LAYERS>; \
-            quick-tap-ms = <QUICKTAP>; \
+            require-prior-idle-ms = <IDLE-MS>; \
         };
 
 / {
