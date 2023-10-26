@@ -137,6 +137,7 @@
             quick-tap-ms = <150>; //trying to see what gives with 0 instead of 150 => not kept.
             flavor = "tap-preferred";
             bindings = <&mo>, <&kp>;
+            require-prior-idle-ms = <125>;
             hold-trigger-key-positions = <KEYS_R THUMBS_L THUMBS_R>;
             hold-trigger-on-release;
         };
