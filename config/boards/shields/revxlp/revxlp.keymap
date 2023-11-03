@@ -24,7 +24,7 @@
 
 &kscan0 { //debounce-period = <17>;
           debounce-press-ms = <17>;
-          ebounce-release-ms = <17>
+          ebounce-release-ms = <17>;
         };
 
 // Mouse specific config
