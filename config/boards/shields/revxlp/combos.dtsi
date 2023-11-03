@@ -53,8 +53,8 @@ COMBO(op-redo,    &kp LG(LS(BSLH)),     15 27,         OPTIM, 50, 100)
 
 // Windows Management combos
 //COMBO(applist,      &kp RC(SPACE),      28 29,         OPTIM, 50, 100)
-COMBO(appswitch,      &kp cmd_tab_enter,  28 29,       OPTIM, 50, 100)
-COMBO(appswitch2,     &kp cmd_tab_leave,  28 29,       APPSWITCH, 50, 100)
+COMBO(appswitch,      &cmd_tab_enter,  28 29,       OPTIM, 50, 100)
+COMBO(appswitch2,     &cmd_tab_leave,  28 29,       APPSWITCH, 50, 100)
 //COMBO(space-l,    &kp LC(LEFT),         36 37,         OPTIM, 50, 100)
 //COMBO(space-r,    &kp LC(RIGHT),        40 41,         OPTIM, 50, 100)
 
