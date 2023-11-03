@@ -300,7 +300,7 @@
 //                   |     |     |     |                  |      |       |       |      |       |       |
             bindings = <
 &cmd_tab_leave &cmd_tab_leave &cmd_tab_leave &cmd_tab_leave &cmd_tab_leave &cmd_tab_leave                 &cmd_tab_leave &cmd_tab_leave &cmd_tab_leave &cmd_tab_leave &q_minuscule   &cmd_tab_leave
-&cmd_tab_leave &cmd_tab_leave &cmd_tab_leave &cmd_tab_leave &cmd_tab_leave &cmd_tab_leave                 &cmd_tab_leave &kp LEFT       &kp UP         &kp DOWN       &kp RIGHT      &cmd_tab_leave
+&kp LSHFT      &cmd_tab_leave &cmd_tab_leave &cmd_tab_leave &cmd_tab_leave &cmd_tab_leave                 &cmd_tab_leave &kp LEFT       &kp UP         &kp DOWN       &kp RIGHT      &cmd_tab_leave
 &cmd_tab_leave &cmd_tab_leave &cmd_tab_leave &cmd_tab_leave &cmd_tab_leave &cmd_tab_leave                 &cmd_tab_leave &cmd_tab_leave &cmd_tab_leave &cmd_tab_leave &cmd_tab_leave &cmd_tab_leave
                                              &cmd_tab_leave &kp TAB        &kp SPACE                      &kp SPACE      &cmd_tab_leave &cmd_tab_leave   
             >;
