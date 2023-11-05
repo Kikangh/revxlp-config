@@ -1,0 +1,63 @@
+$        shortcuts_layer {
+        label = "SHORTCUTS";
+// TODO: update table
+// ------------------------------------------------------------------------------------------------------------
+// |     |     |          |             |WkfyMirror  |       |                  |      |Rycst-MenuCmd|       |      |       |       |
+// |     |     |          |             |            |1PassWD|                  |      |             |       |      |       |       |
+// |     |     |HookCpyLk | HookCpyMDLk | HookToLink |  Hook |                  |      |             |       |      |       |       |
+//                        |             |            |       |                  |      |             |       |
+            bindings = <
+&none &none &none                 &none                 &kp LG(LS(OP_M))      &none                             &none &kp LS(LA(LG(N8))) &none &none &none &none
+&none &none &none                 &none                 &none                 &kp LS(LA(LG(OP_P)))              &none &none &none &none &none &none
+&none &none &kp LG(LC(LA(SPACE))) &kp LS(LA(LG(SPACE))) &kp LC(LS(LG(SPACE))) &kp LG(LS(SPACE))                 &none &none &none &none &none &none
+                                  &none                 &none                 &none                             &none &none &none 
+            >;
+        };
+
+        navigation_layer {
+        label = "NAV";
+// TODO: update table
+// ------------------------------------------------------------------------------------------------------------
+// | &to 0|     |     |     |     | BSPC|                  |      |       |       |      |       |       |
+// |      |     |     |     |     |     |                  |      |       |       |      |       |       |
+// |      |     |     |     |     |     |                  |      |       |       |      |       |       |
+//                    |     |     |     |                  |      |       |       | 
+            bindings = <
+&to 0 &none &none &none &none &kp BSPC             &none &none    &none  &none    &none     &none
+&none &trans &kp LCTRL &kp LALT &kp LGUI &none     &none &kp LEFT &kp UP &kp DOWN &kp RIGHT &none
+&none &none &none &none &none &none                &none &none    &none  &none    &none     &none
+                  &none &none &none                &none &none    &none 
+            >;
+        };
+
+        mouse_layer {
+        label = "MOUSE";
+// TODO: update table
+// ------------------------------------------------------------------------------------------------------------
+// |     |     |     |     |     |     |                  |      |       |       |      |       |       |
+// |     |     |     |     |     |     |                  |      |       |       |      |       |       |
+// |     |     |     |     |     |     |                  |      |       |       |      |       |       |
+//                   |     |     |     |                  |      |       |       |
+            bindings = <
+&none &none &none &none &none &none                &none &none &none &none &none &none
+&none &none &none &none &none &none                &none &none &none &none &none &none
+&none &none &none &none &none &none                &none &none &none &none &none &none
+                  &none &none &none                &none &none &none 
+            >;
+        };
+
+        media_layer {
+        label = "MEDIA";
+// TODO: update table
+// ------------------------------------------------------------------------------------------------------------
+// |     |     |     |     |     |     |                  |      |       |       |      |       |       |
+// |     |     |     |     |     |     |                  |      |       |       |      |       |       |
+// |     |     |     |     |     |     |                  |      |       |       |      |       |       |
+//                   |     |     |     |                  |      |       |       |
+            bindings = <
+&none &none &none &none &none &none                &none &none &none &none &none &none
+&none &none &none &none &none &none                &none &none &none &none &none &none
+&none &none &none &none &none &none                &none &none &none &none &none &none
+                  &none &none &none                &none &none &none 
+            >;
+        };

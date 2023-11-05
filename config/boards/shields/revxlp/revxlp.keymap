@@ -89,6 +89,34 @@
                 <&macro_tap>,
                 <&to 0>;
         };
+        cmd_tab_enter: cmd_tab_enter {
+            label = "cmd_tab_enter";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <10>;
+            tap-ms = <20>;
+            bindings =
+                <&macro_tap>,
+                <&kp ENTER>
+                <&macro_release>,
+                <&kp LEFT_GUI>,
+                <&macro_tap>,
+                <&to 0>;
+        };
+        cmd_tab_space: cmd_tab_space {
+            label = "cmd_tab_space";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <10>;
+            tap-ms = <20>;
+            bindings =
+                <&macro_release>,
+                <&kp LEFT_GUI>,
+                <&macro_tap>,
+                <&kp SPACE>,
+                <&macro_press>,
+                <&kp LEFT_GUI>;
+        };
     };
 };
 
@@ -199,12 +227,12 @@
 // | LSHFT  |  A  |  I  |    E     |   U   |     ,     |                   |  C      |  T     |  S    |  R   |   N   |   M   |
 // |MISSCTRL|  K  |  Y  |    È     |   .   |     W     |                   |  '      |  Q     |  G    |  H   |   F   |   Ç   |
 //                     | LOWER /   |   X / | CMD/ENTER |                   | NUMBER/ | RAISE/ | RC+SPC|
-//                     | CLPBD HIST| LSHFT |                             | SPACE   |  W     | 
+//                     | CLIPB HIST| LSHFT |                             | SPACE   |  W     | 
             bindings = <
-&kp TAB   &kp OP_AGRV  &kp OP_J        &kp OP_O            &kp OP_EACU         &kp OP_B                     &kp OP_F          &kp OP_D        &kp OP_L        &kp OP_QUOT     &kp OP_Q &kp BSPC
-&kp LSHFT &hll ARROW A &hml LCTRL OP_I &hml LALT OP_E      &hml LGUI OP_U      &kp OP_COMM                  &kp OP_P          &hmr RGUI OP_T  &hmr RALT OP_S  &hmr RCTRL OP_R &kp OP_N &kp OP_CIR
-&kp F10   &kp OP_K     &kp OP_Y        &kp OP_EGRV         &kp OP_DOT          &hll SCREEN OP_W             &kp OP_G          &hsr RSHFT OP_C &kp OP_M        &kp OP_H        &kp OP_V &kp RBKT
-                                       &lt LOWER LG(LA(H)) &hsl LSHFT TAB      &mt LGUI SPACE               &lt NUMBERS SPACE &lt RAISE OP_Z  &kp OP_X
+&kp TAB   &kp OP_AGRV  &kp OP_J        &kp OP_O               &kp OP_EACU         &kp OP_B                     &kp OP_F          &kp OP_D        &kp OP_L        &kp OP_QUOT     &kp OP_Q &kp BSPC
+&kp LSHFT &hll ARROW A &hml LCTRL OP_I &hml LALT OP_E         &hml LGUI OP_U      &kp OP_COMM                  &kp OP_P          &hmr RGUI OP_T  &hmr RALT OP_S  &hmr RCTRL OP_R &kp OP_N &kp OP_CIR
+&kp F10   &kp OP_K     &kp OP_Y        &kp OP_EGRV            &kp OP_DOT          &hll SCREEN OP_W             &kp OP_G          &hsr RSHFT OP_C &kp OP_M        &kp OP_H        &kp OP_V &kp RBKT
+                                       &lt LOWER LG(LA(OP_P)) &hsl LSHFT TAB      &mt LGUI SPACE               &lt NUMBERS SPACE &lt RAISE OP_Z  &kp OP_X
 
             //code pour utiler Caps_Word : &cwl RAISE 0 (pas adapté à Optimot au 04/07/2022; les keycodes Qwerty sont pris en compte, et même si on peut
             // faire en sorte que certains keycodes ne désactivent pas Caps, je ne vois pas pour le moment comment faire pour que des keycodes
@@ -246,14 +274,14 @@
         arrow_layer {
         label = "ARROW";
 // ----------------------------------------------------------------------------------------------------------------------------------------------------------------
-// | TO 0  | none| none     | none         | WkfyMirror  |  BSPC         |                   |  @   |  Rycst-MenuCmd  |  none  |  none   |  q    |  BSPC    |
+// | TO 0  | none| none     | none         | WkfyMirror  |  BSPC     |                   |  @   |  Rycst-MenuCmd  |  none  |  none   |  q    |      |
 // | Trans |Trans|          |              |             |  1PassWD  |                   |  #   |  Left           |  UP    |  Down   | Right   |  None |
-// | RESET |     | HookCpyLk  | HookCpyMDLk  | HookToLink |   Hook     |                   |  ??ê?? |  $/€          |PGUP|PGDWN|TxTXSearch|TxTXDisable|
-//                          |              |   LSHFT     |  CMD/return   |                   |  SPC |WkfyPrev         |WkfyNext|
+// | RESET |     |HookCpyLk | HookCpyMDLk  | HookToLink  |   Hook    |                   |  ??ê?? |  $/€          |PGUP|PGDWN|TxTXSearch|TxTXDisable|
+//                          |              |   LSHFT     |CMD/return |                   |  SPC |WkfyPrev         |WkfyNext|
             bindings = <
-&to 0       &none     &none                 &none                 &kp LG(LS(COMMA))     &kp BSPC                       &kp OP_AT            &kp LS(LA(LG(N8))) &none         &none      &q_minuscule      &kp BSPC
-&trans      &trans    &kp LCTRL             &kp LALT              &kp LGUI              &kp LS(LA(LG(OP_P)))           &kp OP_HASH          &kp LEFT           &kp UP        &kp DOWN   &kp RIGHT         &q_maj
-&bootloader &none     &kp LG(LC(LA(SPACE))) &kp LS(LA(LG(SPACE))) &kp LC(LS(LG(SPACE))) &kp LG(LS(SPACE))              &kp NON_US_BACKSLASH &kp GRAVE          &kp PG_UP     &kp PG_DN  &kp RG(LS(LA(Y))) &kp RA(RC(RG(J)))
+&to 0       &none     &none                 &none                 &kp LG(LS(OP_M))      &kp BSPC                       &kp OP_AT            &kp LS(LA(LG(N8))) &none         &none      &q_minuscule         &kp BSPC
+&trans      &trans    &kp LCTRL             &kp LALT              &kp LGUI              &kp LS(LA(LG(OP_P)))           &kp OP_HASH          &kp LEFT           &kp UP        &kp DOWN   &kp RIGHT            &q_maj
+&bootloader &none     &kp LG(LC(LA(SPACE))) &kp LS(LA(LG(SPACE))) &kp LC(LS(LG(SPACE))) &kp LG(LS(SPACE))              &kp NON_US_BACKSLASH &kp GRAVE          &kp PG_UP     &kp PG_DN  &kp RG(LS(LA(OP_F))) &kp RA(RC(RG(OP_T)))
                                             &trans                &trans                &trans                         &hmr RSHFT SPACE     &kp HOME           &kp END
             >;
         };
@@ -266,10 +294,10 @@
 // | F10   | ??ê?? |  ;  |  :   |  .   |   &     |                   |  ,   |   No  |   No  |   H   |   No  |   #/% |
 //                     | LCTRL| LALT |CMD/space|                   | togg | RCTRL | RALT  |
             bindings = <            
-&kp ESC   &kp N1    &kp N2    &kp N3    &kp N4    &kp N5                    &kp N6    &kp N7    &kp N8    &kp N9    &kp N0    &kp BSPC
-&kp LSHFT &kp KP_N1 &kp KP_N2 &kp KP_N3 &kp KP_N4 &kp KP_N5                 &kp KP_N6 &kp KP_N7 &kp KP_N8 &kp KP_N9 &kp KP_N0 &kp MINUS
-&kp CAPS  &kp GRAVE &kp LS(G) &kp LS(V) &trans    &kp LA(J)                 &kp G     &none     &none     &trans    &none     &kp EQUAL
-                              &kp LCTRL &kp LALT  &mt LGUI SPACE            &trans    &kp RCTRL &kp RALT
+&kp ESC   &kp N1    &kp N2      &kp N3    &kp N4    &kp N5                    &kp N6      &kp N7    &kp N8    &kp N9    &kp N0    &kp BSPC
+&kp LSHFT &kp KP_N1 &kp KP_N2   &kp KP_N3 &kp KP_N4 &kp KP_N5                 &kp KP_N6   &kp KP_N7 &kp KP_N8 &kp KP_N9 &kp KP_N0 &kp OP_AT
+&kp CAPS  &kp GRAVE &kp OP_SCLN &kp OP_COLN &trans  &kp LA(OP_T)              &kp OP_COMM &none     &none     &trans    &none     &kp OP_HASH
+                                &kp LCTRL &kp LALT  &mt LGUI SPACE            &trans      &kp RCTRL &kp RALT
             >;
         };
 
