@@ -89,8 +89,8 @@
                 <&macro_tap>,
                 <&to 0>;
         };
-        cmd_tab_enter: cmd_tab_enter {
-            label = "cmd_tab_enter";
+        cmd_tab_return: cmd_tab_return {
+            label = "cmd_tab_return";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             wait-ms = <10>;
@@ -330,7 +330,7 @@
 &cmd_tab_leave &cmd_tab_leave &cmd_tab_leave &cmd_tab_leave &cmd_tab_leave &cmd_tab_leave                 &cmd_tab_leave &cmd_tab_leave &cmd_tab_leave &cmd_tab_leave &q_minuscule   &cmd_tab_leave
 &kp LSHFT      &cmd_tab_leave &cmd_tab_leave &cmd_tab_leave &cmd_tab_leave &cmd_tab_leave                 &cmd_tab_leave &kp LEFT       &kp UP         &kp DOWN       &kp RIGHT      &cmd_tab_leave
 &cmd_tab_leave &cmd_tab_leave &cmd_tab_leave &cmd_tab_leave &cmd_tab_leave &cmd_tab_leave                 &cmd_tab_leave &cmd_tab_leave &cmd_tab_leave &cmd_tab_leave &cmd_tab_leave &cmd_tab_leave
-                                             &cmd_tab_leave &kp TAB        &kp SPACE                      &kp SPACE      &cmd_tab_leave &cmd_tab_leave   
+                                             &cmd_tab_leave &kp TAB        &cmd_tab_space                 &cmd_tab_space &cmd_tab_leave &cmd_tab_leave   
             >;
         };
    };
