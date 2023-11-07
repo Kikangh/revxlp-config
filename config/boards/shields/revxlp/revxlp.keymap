@@ -136,8 +136,10 @@
 
 // Key position groups
 #define KEYS_L 0 1 2 3 4 5 12 13 14 15 16 17 24 25 26 27 28 29
-#define KEYS_R 0 6 7 8 9 10 11 18 19 20 21 22 23 30 31 32 33 34 35   //added 0 because I want hold behavior to trigger when fast typing cmd+tab.
+#define KEYS_R 6 7 8 9 10 11 18 19 20 21 22 23 30 31 32 33 34 35   //added 0 because I want hold behavior to trigger when fast typing cmd+tab.
+#define KEYS_L_SPECIAL 0
 #define THUMBS_L 36 37 38
+#define THUMB_L_SPECIAL 37
 #define THUMBS_R 39 40 41
 
 /*                KEY POSITIONS
@@ -161,7 +163,7 @@
             bindings = <&kp>, <&kp>;
             //global-quick-tap-ms = <150>;
             require-prior-idle-ms = <125>;
-            hold-trigger-key-positions = <KEYS_R THUMBS_R>;
+            hold-trigger-key-positions = <KEYS_R KEYS_L_SPECIAL THUMBS_R THUMB_L_SPECIAL>;
             hold-trigger-on-release;
         };
         hmr: homerow_mods_r {
