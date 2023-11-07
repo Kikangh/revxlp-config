@@ -11,6 +11,38 @@ $        shortcuts_layer {
 &none &none &none                 &none                 &none                 &kp LS(LA(LG(OP_P)))              &none &none &none &none &none &none
 &none &none &kp LG(LC(LA(SPACE))) &kp LS(LA(LG(SPACE))) &kp LC(LS(LG(SPACE))) &kp LG(LS(SPACE))                 &none &none &none &none &none &none
                                   &none                 &none                 &none                             &none &none &none 
+            >; //cmd+alt+ctrl+' => AskAiChat
+        };
+
+        screenshot_layer {
+        label = "SCREENSHOT";
+// TODO: update table
+// ------------------------------------------------------------------------------------------------------------
+// |     |     |     |     |     |     |                  |      |       |       |      |       |       |
+// |     |     |     |     |     |     |                  |      |       |       |      |       |       |
+// |     |     |     |     |     |     |                  |      |       |       |      |       |       |
+//                   |     |     |     |                  |      |       |       |
+            bindings = <
+&none &none &none &none &none &none                &none &none &none &none &none &none
+&none &none &none &none &none &none                &none &none &none &none &none &none
+&none &none &none &none &none &none                &none &none &none &none &none &none
+                  &none &none &none                &none &none &none 
+            >;
+        };
+
+        WinMgmt_layer {
+        label = "WINDOWS-MANAGEMENT";
+// TODO: update table
+// ------------------------------------------------------------------------------------------------------------
+// |                  |  F1    |  F2      |F3/MisCtrl AllApps|  F4  |  F5               |                  |NextDisplay   |MaxWin     |WinLTop   |WinRTop   |            |       |
+// |                  ||F6/DND |F7/dictate|  F8              |  F9  |F10/MisCtrl AppsWin|                  |CenterWin     |WinLeftHalf|WinTopHalf|WinBotHalf|WinRightSide|       |
+// |F3/MisCtrl AllApps|        |          |                  |  F11 |  F12              |                  |PreviousWinPos|WinPrevDesk|WinLBtm   |WinRBtm   |WinNextDesk |   ??  |
+//                                        |                  |      |                   |                  |      ??      |    ??     |   ??     |
+            bindings = <
+&none  &kp F1 &kp F2 &kp F3 &kp F4  &kp F5               &kp LA(LC(LS(OP_F))) &kp LA(LC(LS(OP_D)))     &kp LA(LC(LS(OP_L))) &kp LA(LC(LS(OP_QUOT))) &none                     &none
+&none  &kp F6 &kp F7 &kp F8 &kp F9  &kp F10              &kp LA(LC(LS(OP_P))) &kp LA(LC(LS(LEFT)))     &kp LA(LC(LS(UP)))   &kp LA(LC(LS(DOWN)))    &kp LA(LC(LS(RIGHT)))     &none
+&kp F3 &none  &none  &none  &kp F11 &kp F12              &kp LA(LC(LS(OP_G))) &kp LG(LA(LC(LS(LEFT)))) &kp LA(LC(LS(OP_M))) &kp LA(LC(LS(OP_H)))    &kp LG(LA(LC(LS(RIGHT)))) &kp LS(LA(LC(LG(OP_D))))
+                     &trans &none   &none                &none                &none                    &none 
             >;
         };
 
@@ -23,10 +55,10 @@ $        shortcuts_layer {
 // |      |     |     |     |     |     |                  |      |       |       |      |       |       |
 //                    |     |     |     |                  |      |       |       | 
             bindings = <
-&to 0 &none &none &none &none &kp BSPC             &none &none    &none  &none    &none     &none
-&none &trans &kp LCTRL &kp LALT &kp LGUI &none     &none &kp LEFT &kp UP &kp DOWN &kp RIGHT &none
-&none &none &none &none &none &none                &none &none    &none  &none    &none     &none
-                  &none &none &none                &none &none    &none 
+&to 0       &none  &none     &none    &none    &kp BSPC             &none      &none    &none     &none     &none     &none
+&none       &trans &kp LCTRL &kp LALT &kp LGUI &none                &kp OP_DLR &kp LEFT &kp UP    &kp DOWN  &kp RIGHT &kp END
+&bootloader &none  &none     &none    &none    &none                &kp NON_US_BACKSLASH      &kp HOME &kp PG_UP &kp PG_DN &kp END   &none
+                             &none    &none    &none                &none      &none    &none 
             >;
         };
 
@@ -61,3 +93,10 @@ $        shortcuts_layer {
                   &none &none &none                &none &none &none 
             >;
         };
+/*
+&q_minuscule
+&q_maj
+&kp NON_US_BACKSLASH //ê sauf sur mac
+&kp OP_EURO //LS(OP_DLR)
+
+*/

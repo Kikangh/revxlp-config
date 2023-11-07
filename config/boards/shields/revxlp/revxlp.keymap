@@ -20,6 +20,8 @@
 #define SCREEN  5
 #define APPSWITCH 6
 
+#define CLIPB_HIST LG(LA(OP_P))
+
 #include "combos.dtsi" // This include **has** to be made **after** the layers' define, else it won't compile.
 
 &kscan0 { //debounce-period = <17>;
@@ -252,10 +254,10 @@
 //                     | LOWER /   |   X / | CMD/ENTER |                   | NUMBER/ | RAISE/ | RC+SPC|
 //                     | CLIPB HIST| LSHFT |                             | SPACE   |  W     | 
             bindings = <
-&kp TAB   &kp OP_AGRV  &kp OP_J        &kp OP_O               &kp OP_EACU         &kp OP_B                     &kp OP_F          &kp OP_D        &kp OP_L        &kp OP_QUOT     &kp OP_Q &kp BSPC
-&kp LSHFT &hll ARROW A &hml LCTRL OP_I &hml LALT OP_E         &hml LGUI OP_U      &kp OP_COMM                  &kp OP_P          &hmr RGUI OP_T  &hmr RALT OP_S  &hmr RCTRL OP_R &kp OP_N &kp OP_CIR
-&kp F10   &kp OP_K     &kp OP_Y        &kp OP_EGRV            &kp OP_DOT          &hll SCREEN OP_W             &kp OP_G          &hsr RSHFT OP_C &kp OP_M        &kp OP_H        &kp OP_V &kp OP_CCED
-                                       &lt LOWER LG(LA(OP_P)) &hsl LSHFT TAB      &mt LGUI SPACE               &lt NUMBERS SPACE &lt RAISE OP_Z  &td0 
+&kp TAB   &kp OP_AGRV  &kp OP_J        &kp OP_O             &kp OP_EACU    &kp OP_B                     &kp OP_F          &kp OP_D        &kp OP_L       &kp OP_QUOT     &kp OP_Q &kp BSPC
+&kp LSHFT &hll ARROW A &hml LCTRL OP_I &hml LALT OP_E       &hml LGUI OP_U &kp OP_COMM                  &kp OP_P          &hmr RGUI OP_T  &hmr RALT OP_S &hmr RCTRL OP_R &kp OP_N &kp OP_CIR
+&kp F10   &kp OP_K     &kp OP_Y        &kp OP_EGRV          &kp OP_DOT     &hll SCREEN OP_W             &kp OP_G          &hsr RSHFT OP_C &kp OP_M       &kp OP_H        &kp OP_V &kp OP_CCED
+                                       &lt LOWER CLIPB_HIST &hsl LSHFT TAB &mt LGUI SPACE               &lt NUMBERS SPACE &lt RAISE OP_Z  &td0 
 
             //code pour utiler Caps_Word : &cwl RAISE 0 (pas adapté à Optimot au 04/07/2022; les keycodes Qwerty sont pris en compte, et même si on peut
             // faire en sorte que certains keycodes ne désactivent pas Caps, je ne vois pas pour le moment comment faire pour que des keycodes
@@ -304,7 +306,7 @@
             bindings = <
 &to 0       &none     &none                 &none                 &kp LG(LS(OP_M))      &kp BSPC                       &kp OP_AT            &kp LS(LA(LG(N8))) &none         &none      &q_minuscule         &kp BSPC
 &trans      &trans    &kp LCTRL             &kp LALT              &kp LGUI              &kp LS(LA(LG(OP_P)))           &kp OP_HASH          &kp LEFT           &kp UP        &kp DOWN   &kp RIGHT            &q_maj
-&bootloader &none     &kp LG(LC(LA(SPACE))) &kp LS(LA(LG(SPACE))) &kp LC(LS(LG(SPACE))) &kp LG(LS(SPACE))              &kp NON_US_BACKSLASH &kp GRAVE          &kp PG_UP     &kp PG_DN  &kp RG(LS(LA(OP_F))) &kp RA(RC(RG(OP_T)))
+&bootloader &none     &kp LG(LC(LA(SPACE))) &kp LS(LA(LG(SPACE))) &kp LC(LS(LG(SPACE))) &kp LG(LS(SPACE))              &kp NON_US_BACKSLASH &kp OP_DLR         &kp PG_UP     &kp PG_DN  &kp RG(LS(LA(OP_F))) &kp RA(RC(RG(OP_T)))
                                             &trans                &trans                &trans                         &hmr RSHFT SPACE     &kp HOME           &kp END
             >;
         };
