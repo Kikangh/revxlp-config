@@ -108,7 +108,7 @@
         colemak_dhm_layer {
             label = "Base";
             bindings = <
-       &none        &kp Q      &kp OP_eacut      &kp F       &kp P          &kp B         &kp J            &kp L          &kp U       &kp Y      &kp QUOT &none
+       &none        &kp Q      &kp OP_AC      &kp F       &kp P          &kp B         &kp J            &kp L          &kp U       &kp Y      &kp QUOT &none
        &none        &kp A      &kp R      &kp S       &kp T          &kp G         &kp M            &kp N          &kp E       &kp I      &kp O    &none
        &none        &kp Z      &kp X      &kp C       &kp D          &kp V         &kp K            &kp H          &kp COMMA   &kp DOT    &kp SEMI &none     
                                           &none       &mo NAV_L      &shifty      &kp SPACE        &mo NUM_L &none
