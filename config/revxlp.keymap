@@ -155,7 +155,7 @@
 // | SHFT |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  | SHFT(RET) |
 //                         | ALT | LWR | SPC | RSE  | ALT |
             bindings = <
-&bl BL_TOG &kp Q      &kp W      &kp F       &kp P          &kp B         &kp J            &kp L          &kp U       &kp Y      &kp QUOT &bootloader
+&bl BL_TOG &kp OP_AC      &kp W      &kp F       &kp P          &kp B         &kp J            &kp L          &kp U       &kp Y      &kp QUOT &bootloader
 &none &hm LGUI A &hm LALT R &hm LCTRL S &hm LSHFT T    &kp G         &kp M            &hm RSHFT N    &hm RCTRL E &hm LALT I &hm LGUI O &none
 &none &kp Z      &kp X      &kp C       &kp D          &kp V         &kp K            &kp H          &kp COMMA   &kp DOT    &kp FSLH      &none
                                   &lt NAV_L TAB  &lt OTH_L RET &kp RET &lt NUM_L SPACE  &lt SYM_L BKSP
