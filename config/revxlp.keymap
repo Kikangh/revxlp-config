@@ -98,7 +98,7 @@
         qwerty_layer {
             label = "Qwerty";
             bindings = <
-       &none        &none      &kp W      &kp E       &kp R          &kp T         &kp Y            &kp U          &kp I       &kp O      &kp P    &none
+       &none        &kp OP_AC      &kp J      &kp E       &kp R          &kp T         &kp Y            &kp U          &kp I       &kp O      &kp P    &none
        &none        &kp A      &kp S      &kp D       &kp F          &kp G         &kp H            &kp J          &kp K       &kp L      &kp QUOT &none
        &none        &kp Z      &kp X      &kp C       &kp V          &kp B         &kp N            &kp M          &kp COMMA   &kp DOT    &kp SEMI &none
                                           &none   &mo NAV_L      &shifty      &kp SPACE  &mo NUM_L &none
