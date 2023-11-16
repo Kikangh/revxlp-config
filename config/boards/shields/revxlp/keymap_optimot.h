@@ -55,8 +55,8 @@
 #define OP_EQL  N8    // =
 #define OP_LPRN N9    // (
 #define OP_RPRN N0    // )
-#define OP_AT   MINUS // @
-#define OP_HASH EQUAL // #
+#define OP_AT   MINUS // @ note : with Optimot 1.5, when CMD is held -> -
+#define OP_HASH EQUAL // # note : with Optimot 1.5, when CMD is held -> +
 // Row 2
 #define OP_AGRV Q     // À
 #define OP_J    W     // J
@@ -132,3 +132,5 @@
 #define OP_COLN LS(OP_DOT)   // :
 // Row 5
 #define OP_NBSP LS(SPACE)   //   (non-breaking space) /!\ Pour la disposition Optimot 1.4 ou 1.5 non altérée, il faut utiler le code LA(SPACE)
+//somewhere
+#define OP_ECIRC NON_US_BACKSLASH //ê (ne marche pas sous mac avec Karabiner et Optimot 1.5, ça donne $...)
