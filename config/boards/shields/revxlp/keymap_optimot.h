@@ -55,8 +55,8 @@
 #define OP_EQL  N8    // =
 #define OP_LPRN N9    // (
 #define OP_RPRN N0    // )
-#define OP_AT   MINUS // @
-#define OP_HASH EQUAL // #
+#define OP_AT   MINUS // @ note : with Optimot 1.5, when CMD is held -> -
+#define OP_HASH EQUAL // # note : with Optimot 1.5, when CMD is held -> +
 // Row 2
 #define OP_AGRV Q     // À
 #define OP_J    W     // J
