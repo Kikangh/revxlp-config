@@ -200,10 +200,10 @@ combos {
         layers = <OPTIM NUMBERS APPSWITCH>;
         require-prior-idle-ms = <100>;
     };
-    combo_op_x {
+    combo_op_cced {
         timeout-ms = <50>;
         key-positions = <20 21>;
-        bindings = <&kp OP_X>;
+        bindings = <&kp OP_CCED>;
         layers = <OPTIM>;
         require-prior-idle-ms = <100>;
     };
