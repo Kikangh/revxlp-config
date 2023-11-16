@@ -527,7 +527,7 @@ combos {
             label = "TAP_DANCE_0";
             #binding-cells = <0>;
             tapping-term-ms = <150>;
-            bindings = <&kp OP_CCED>, <&kp LC(LG(OP_Q))>;
+            bindings = <&kp OP_X>, <&kp LC(LG(OP_Q))>;
         };
     };
 
@@ -552,10 +552,10 @@ combos {
 //                     | LOWER /   |   X / | CMD/ENTER |                   | NUMBER/ | RAISE/ | RC+SPC|
 //                     | CLIPB HIST| LSHFT |                             | SPACE   |  W     | 
             bindings = <
-&kp TAB   &kp OP_AGRV  &kp OP_J        &kp OP_O             &kp OP_EACU    &kp OP_B                     &kp OP_F          &kp OP_D        &kp OP_L       &kp OP_QUOT     &kp OP_Q &kp BSPC
-&kp LSHFT &hll ARROW A &hml LCTRL OP_I &hml LALT OP_E       &hml LGUI OP_U &kp OP_COMM                  &kp OP_P          &hmr RGUI OP_T  &hmr RALT OP_S &hmr RCTRL OP_R &kp OP_N &kp OP_CIR
-&kp F10   &kp OP_K     &kp OP_Y        &kp OP_EGRV          &kp OP_DOT     &hll SCREEN OP_W             &kp OP_G          &hsr RSHFT OP_C &kp OP_M       &kp OP_H        &kp OP_V &kp OP_CCED
-                                       &lt LOWER CLIPB_HIST &hsl LSHFT TAB &mt LGUI SPACE               &lt NUMBERS SPACE &lt RAISE OP_Z  &td0 
+&kp TAB   &kp OP_AGRV  &kp OP_J        &kp OP_O             &kp OP_EACU    &kp OP_B                     &kp OP_F       &kp OP_D          &kp OP_L       &kp OP_QUOT     &kp OP_Q &kp BSPC
+&kp LSHFT &hll ARROW A &hml LCTRL OP_I &hml LALT OP_E       &hml LGUI OP_U &kp OP_COMM                  &kp OP_P       &hmr RGUI OP_T    &hmr RALT OP_S &hmr RCTRL OP_R &kp OP_N &kp OP_CIR
+&kp F10   &kp OP_K     &kp OP_Y        &kp OP_EGRV          &kp OP_DOT     &hll SCREEN OP_W             &kp OP_G       &hsr RSHFT OP_C   &kp OP_M       &kp OP_H        &kp OP_V &kp OP_CCED
+                                       &lt LOWER CLIPB_HIST &mt LGUI SPACE &hsl LSHFT TAB                &lt RAISE OP_Z &lt NUMBERS SPACE &td0 
 
             //code pour utiler Caps_Word : &cwl RAISE 0 (pas adapté à Optimot au 04/07/2022; les keycodes Qwerty sont pris en compte, et même si on peut
             // faire en sorte que certains keycodes ne désactivent pas Caps, je ne vois pas pour le moment comment faire pour que des keycodes
