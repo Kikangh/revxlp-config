@@ -462,7 +462,7 @@ combos {
             flavor = "balanced";
             bindings = <&kp>, <&kp>;
             //global-quick-tap-ms = <150>;
-            require-prior-idle-ms = <125>;
+            require-prior-idle-ms = <100>;
             hold-trigger-key-positions = <KEYS_R KEYS_L_SPECIAL THUMBS_R THUMB_L_SPECIAL>;
             hold-trigger-on-release;
         };
