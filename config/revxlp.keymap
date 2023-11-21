@@ -541,7 +541,7 @@ combos {
             label = "TAP_DANCE_0";
             #binding-cells = <0>;
             tapping-term-ms = <100>;
-            bindings = <&kp OP_X>, <&kp OP_X &kp OP_X> ,<&kp LC(LG(OP_Q)),>;
+            bindings = <&kp OP_X>, <&kp OP_X &kp OP_X>,<&kp LC(LG(OP_Q))>;
         };
     };
 
