@@ -552,7 +552,7 @@ combos {
             compatible = "zmk,behavior-tap-dance";
             label = "TAP_DANCE_0";
             #binding-cells = <0>;
-            tapping-term-ms = <100>;
+            tapping-term-ms = <150>;
             bindings = <&kp OP_X>, <&kp OP_CCED>, <&kp LC(LG(OP_Q))>;
         };
     };
