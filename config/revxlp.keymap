@@ -445,6 +445,18 @@ combos {
                 <&macro_tap>,
                 <&to 0>;
         };
+        doublexx: doublexx {
+            label = "doublexx";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <10>;
+            tap-ms = <20>;
+            bindings =
+                <&macro_tap>,
+                <&kp OP_X>,
+                <&macro_tap>,
+                <&kp OP_X>;
+        };
     };
 };
 
@@ -541,7 +553,7 @@ combos {
             label = "TAP_DANCE_0";
             #binding-cells = <0>;
             tapping-term-ms = <100>;
-            bindings = <&kp OP_X>, <&kp OP_X &kp OP_X>,<&kp LC(LG(OP_Q))>;
+            bindings = <&kp OP_X>, <&doublexx>,<&kp LC(LG(OP_Q))>;
         };
     };
 
