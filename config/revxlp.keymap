@@ -142,7 +142,7 @@ combos {
         key-positions = <18 30>;
         bindings = <&kp RET>;
         layers = <OPTIM ARROW NUMBERS>;
-        require-prior-idle-ms = <100>;
+        require-prior-idle-ms = <80>;
     };
     combo_ret2 {
         timeout-ms = <50>;
