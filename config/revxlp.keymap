@@ -117,8 +117,8 @@
 
 //Applications shorcuts
 //Omniplan
-#define OMNIPLIDENTR &kp LG(LS(N0))
-#define OMNIPLIDENTL &kp LG(LS(N9))
+#define OMNIPLIDENTR LG(LS(N0))
+#define OMNIPLIDENTL LG(LS(N9))
 
 
 #define OPTIM   0
