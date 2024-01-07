@@ -616,7 +616,7 @@ combos {
 // -----------------------------------------------------------------------------------------------------------------------------------------------------------
 // |                     |NewOmniFocTaskFromTxt| HOME       | MouseUP      |  END       |Spotlight|             |      |      |       |      |       |       |
 // |NewOmniFocTaskFromTxt| INS                 | Mouseleft  | MouseDwn     | MouseRght  |      |                | PGUP |      |   ^   |      |       | OutlkNewMainWindow|
-// |AppsForceQuit        | FileMailOutlook     | HookCpyLk  | HookCpyMDLk  | HookToLink |      |                |      |      |       |      |       |       |
+// |AppsForceQuit        | FileMailOutlook     | HookCpyLk  | HookCpyMDLk  | HookToLink |EMOJI|                |      |      |       |      |       |       |
 //                                                          |              |            | Hook |                |      |      |       |
             bindings = <    
 &kp ESC               &kp LA(LC(LG(LS(R)))) &kp LG(LEFT)          &mmv MOVE_VERT(-5000) &kp LG(RIGHT)         &kp LA(LC(LS(SPACE)))               &kp C_MUTE &kp C_VOL_DN        &kp C_VOL_UP          &kp LG(OP_M)        &none                &trans

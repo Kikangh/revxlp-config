@@ -6,8 +6,8 @@ manifest:
       url-base: https://github.com/Kikangh
   projects:
     - name: zmk
-      remote: kikangh
-      revision: Mouse-3.2
+      remote: zmkfirmware
+      revision: main
       import: app/west.yml
   self:
     path: config
