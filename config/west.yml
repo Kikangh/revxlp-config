@@ -6,7 +6,7 @@ manifest:
       url-base: https://github.com/Kikangh
   projects:
     - name: zmk
-      remote: Kikangh
+      remote: kikangh
       revision: 2024MouseBehavior
       import: app/west.yml
   self:
