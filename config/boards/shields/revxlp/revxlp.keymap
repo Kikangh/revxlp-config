@@ -17,7 +17,7 @@
     #define OMNIPLIDENTR LG(LS(N0))
     #define OMNIPLIDENTL LG(LS(N9))
     //1Password
-    #define 1PASSWDQUICK     LS(LA(LG(OP_P)))
+    #define 1PASSWDQUICK LS(LA(LG(OP_P)))
     //Raycast
     #define CLIPB_HIST LG(LA(OP_P))
 
