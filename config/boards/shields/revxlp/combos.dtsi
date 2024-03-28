@@ -54,17 +54,11 @@ COMBO(op-redo,    &kp LG(LS(BSLH)),     15 27,         OPTIM, 50, 100)
 
 // Windows Management combos
 COMBO(applist,      &kp RC(SPACE),      28 29,         OPTIM, 50, 100)
-//COMBO(space-l,    &kp LC(LEFT),         36 37,         OPTIM, 50, 100)
-//COMBO(space-r,    &kp LC(RIGHT),        40 41,         OPTIM, 50, 100)
-
 
 // Application specifics shorcuts
     //OmniPlan
-//COMBO(omnipl-identr, &kp LG(LS(N0)),   20 32,        RAISE, 50, 100) // Also works for workflowy WkfyNext
-//COMBO(omnipl-identl, &kp LG(LS(N9)),   19 31,        RAISE, 50, 100) // Also works for workflowy WkfyPrev
 COMBO(omnipl-identr2, &kp LG(LS(N0)),    16 17,        ARROW, 50, 100) // Also works for workflowy WkfyNext
 COMBO(omnipl-identl2, &kp LG(LS(N9)),    18 19,        ARROW, 50, 100) // Also works for workflowy WkfyPrev
-// COMBO(omnipl-identl3, &kp LG(LS(N9)),    28 29,        ARROW, 50, 100) // Also works for workflowy WkfyPrev
 
 // Escape combos
 COMBO(esc,           &kp ESC,            26 27 28,     0 1 2 3 4 5, 50, 100)
