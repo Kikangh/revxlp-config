@@ -133,6 +133,6 @@
 // Row 4
 #define OP_COLN LS(OP_DOT)   // :
 // Row 5
-#define OP_NBSP LS(SPACE)   //   (non-breaking space) /!\ Pour la disposition Optimot 1.4 ou 1.5 non altérée, il faut utiler le code LA(SPACE)
+#define OP_NBSP LA(SPACE)   //   (non-breaking space) /!\ Pour la disposition Optimot non altérée, il faut utiler le code LA(SPACE)
 //somewhere
 #define OP_ECIRC NON_US_BACKSLASH //ê (ne marche pas sous mac avec Karabiner et Optimot 1.5, ça donne $...)
