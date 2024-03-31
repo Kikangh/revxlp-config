@@ -69,7 +69,8 @@
 #define OP_QUOT O     // '
 #define OP_Q    P     // Q
 #define OP_X    LBKT  // X
-#define OP_CCED RBKT  // Ç
+//#define OP_CCED RBKT  // Ç Use this with my tweaked version of Optimot 1.5
+#define OP_Z RBKT  // Z Use this with Optimot 1.8.1
 // Row 3
 #define OP_A    A     // A
 #define OP_I    S     // I
@@ -82,7 +83,8 @@
 #define OP_R    L     // R
 #define OP_N    SEMI  // N
 #define OP_CIR  SQT   // ^
-#define OP_Z    BSLH  // Z
+//#define OP_Z    BSLH  // Z Use this with my tweaked version of Optimot 1.5
+#define OP_CCED    BSLH  // Ç Use this with Optimot 1.8.1
 // Row 4
 #define OP_K    Z     // K
 #define OP_Y    X     // Y
