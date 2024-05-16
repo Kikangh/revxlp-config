@@ -146,6 +146,7 @@
             require-prior-idle-ms = <125>;
             hold-trigger-key-positions = <KEYS_L THUMBS_L>;
             hold-trigger-on-release;
+        };
         hsl: homerow_shift_l {
             compatible = "zmk,behavior-hold-tap";
             label = "ALPHA_SFT_L";
