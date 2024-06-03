@@ -88,6 +88,9 @@
         };
     };
 };
+&mt {
+hold-while-undecided;
+};
 
 // Key position groups
 #define KEYS_L 0 1 2 3 4 5 12 13 14 15 16 17 24 25 26 27 28 29
@@ -128,19 +131,6 @@
             tapping-term-ms = <250>;
             quick-tap-ms = <150>;
             flavor = "tap-preferred"; //flavor = "balanced"; trying to see if i type faster when set to "tap-preferred"
-            bindings = <&kp>, <&kp>;
-            //global-quick-tap-ms = <150>;
-            require-prior-idle-ms = <125>;
-            hold-trigger-key-positions = <KEYS_L THUMBS_L>;
-            hold-trigger-on-release;
-        };
-        hmr2: homerow_mods_r2 { //this will be dedicated to the S letter (right middle finger), because when I type fast, I have issues with alt
-            compatible = "zmk,behavior-hold-tap";
-            label = "ALPHA_MT_R2";
-            #binding-cells = <2>;
-            tapping-term-ms = <250>;
-            quick-tap-ms = <150>;
-            flavor = "tap-preferred";
             bindings = <&kp>, <&kp>;
             //global-quick-tap-ms = <150>;
             require-prior-idle-ms = <125>;
