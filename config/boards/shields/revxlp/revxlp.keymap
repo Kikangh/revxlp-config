@@ -286,6 +286,7 @@
 &none &bt BT_SEL 4 &none        &none        &none        &none                        &kp LC(LS(S))    &kp LG(LC(LS(N4))) &kp LG(LS(N4)) &kp LG(LC(LS(N3))) &kp LG(LS(N3)) &trans
 &none &none        &none        &none        &none        &trans                       &kp LG(LS(OP_M)) &kp RG(RS(UP)) &kp RG(RS(DOWN))   &kp LG(LS(N9))     &kp LG(LS(N0)) &bl BL_CYCLE
                                 &none        &none        &bl BL_TOG                   &kp SPACE        &kp LG(OP_COMM)    &kp LG(OP_DOT)
+            >;
         };
    };
 };
