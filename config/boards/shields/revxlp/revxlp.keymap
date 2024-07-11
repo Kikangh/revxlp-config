@@ -12,14 +12,7 @@
 #include "keymap_optimot.h"
 
 
-//APPLICATIONS SHORCUTS
-    //Omniplan
-    #define OMNIPLIDENTR LG(LS(N0))
-    #define OMNIPLIDENTL LG(LS(N9))
-    //1Password
-    #define ONEPWDQUICK LS(LA(LG(OP_P)))
-    //Raycast
-    #define CLIPB_HIST LG(LA(OP_P))
+
 
 
 #define OPTIM   0
@@ -29,9 +22,17 @@
 #define NUMBERS 4
 #define SCREEN  5
 
-#define RAYCPNAME  &kp LG(OP_DOT)
-#define RAYCPPHONE &kp LG(LS(OP_DOT))
-#define RAYCPMAIL  &kp LG(LS(OP_COMM))
+//APPLICATIONS SHORCUTS
+    //Omniplan
+    #define OMNIPLIDENTR LG(LS(N0))
+    #define OMNIPLIDENTL LG(LS(N9))
+    //1Password
+    #define ONEPWDQUICK LS(LA(LG(OP_P)))
+    //Raycast
+    #define CLIPB_HIST LG(LA(OP_P))
+    #define RAYCPNAME  LG(OP_DOT)
+    #define RAYCPPHONE LG(LS(OP_DOT))
+    #define RAYCPMAIL  LG(LS(OP_COMM))
 
 
 #include "combos.dtsi" // This include **has** to be made **after** the layers' define, else it won't compile.
