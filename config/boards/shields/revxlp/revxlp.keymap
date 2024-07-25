@@ -259,7 +259,7 @@
 &to 0       &none     &kp OMNIPLIDENTL      &kp OMNIPLIDENTR      &kp LG(LS(OP_M))      &kp BSPC                       &kp OP_AT            &kp LS(LA(LG(N8))) &none         &none      &q_minuscule         &kp BSPC
 &trans      &trans    &kp LCTRL             &kp LALT              &kp LGUI              &kp ONEPWDQUICK                &kp OP_HASH          &kp LEFT           &kp UP        &kp DOWN   &kp RIGHT            &q_maj
 &bootloader &none     &kp LG(LC(LA(SPACE))) &kp LS(LA(LG(SPACE))) &kp LC(LS(LG(SPACE))) &kp LG(LS(SPACE))              &kp NON_US_BACKSLASH &kp OP_DLR         &kp PG_UP     &kp PG_DN  &kp RG(LS(LA(OP_F))) &kp RA(RC(RG(OP_T)))
-                                            &trans                &trans                &trans                         &lt NUMBERS SPACE    &kp HOME           &kp END
+                                            &trans                &trans                &trans                         &trans               &kp HOME           &kp END
             >;
         };
 
