@@ -307,8 +307,8 @@
 
             bindings = <
 &kp ESC &none &none &none &none  &none       &kp LA(LC(LS(OP_F)))     &kp LA(LC(LS(OP_D)))     &kp LA(LC(LS(OP_L)))      &kp LA(LC(LS(OP_QUOT)))  &none                     &kp BSPC
-&none   &none &none &none &none  &none       &kp LA(LC(LS(OP_P)))     &kp LA(LC(LS(LEFT)))     &kp LA(LC(LS(UP)))        &kp LA(LC(LS(DOWN)))     &kp LA(LC(LS(RIGHT)))     &kp LC(LS(N4))
-&none   &none &none &none &trans &none       &kp LG(LA(LC(LS(OP_G))))     &kp LG(LA(LC(LS(LEFT)))) &kp LG(LA(LC(LS(UP))))    &kp LG(LA(LC(LS(DOWN)))) &kp LG(LA(LC(LS(RIGHT)))) &kp LC(LS(N5))
+&none   &none &none &none &none  &none       &kp LA(LC(LS(OP_P)))     &kp LA(LC(LEFT))     &kp LA(LC(UP))        &kp LA(LC(DOWN))     &kp LA(LC(RIGHT))     &kp LC(LS(N4))
+&none   &none &none &none &trans &none       &kp LG(LA(LC(LS(OP_G)))) &kp LG(LA(LC(LEFT))) &kp LG(LA(LC(UP)))    &kp LG(LA(LC(DOWN))) &kp LG(LA(LC(RIGHT))) &kp LC(LS(N5))
                     &none &none  &kp LGUI    &none                    &none                    &none
             >;
         };
