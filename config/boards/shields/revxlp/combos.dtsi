@@ -65,6 +65,6 @@ COMBO(omnipl-identr2, &kp LG(LS(N0)),    16 17,        ARROW, 50, 100) // Also w
 COMBO(omnipl-identl2, &kp LG(LS(N9)),    18 19,        ARROW, 50, 100) // Also works for workflowy WkfyPrev
 
 // Escape combos
-COMBO(esc,           &kp ESC,            26 27 28,     0 1 2 4 5, 50, 0) //require-prior-idle-ms set to 0 instead of 100, to see if it works better. Sometimes I feel it's difficult to escage several times in a row.
+COMBO(esc,           &kp ESC,            26 27 28,     0 1 2 4 5 6, 50, 0) //require-prior-idle-ms set to 0 instead of 100, to see if it works better. Sometimes I feel it's difficult to escage several times in a row.
     };
 };

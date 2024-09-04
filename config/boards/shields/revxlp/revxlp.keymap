@@ -21,6 +21,7 @@
 #define NUMBERS 3
 #define ARROW   4
 #define SCREEN  5
+#define AEROSPACE 6
 
 //APPLICATIONS SHORCUTS
     //Omniplan
@@ -206,10 +207,10 @@
 //                     | LOWER /   |   X / | CMD/ENTER |                   | NUMBER/ | MOUSE/ | RC+SPC|
 //                     | CLIPB HIST| LSHFT |                             | SPACE   |  W     | 
             bindings = <
-&kp TAB   &kp OP_AGRV  &kp OP_J        &kp OP_O             &kp OP_EACU    &kp OP_B                     &kp OP_F       &kp OP_D          &kp OP_L       &kp OP_QUOT     &kp OP_Q &kp BSPC
-&kp LSHFT &hll ARROW A &hml LCTRL OP_I &hml LALT OP_E       &hml LGUI OP_U &kp OP_COMM                  &kp OP_P       &hmr RGUI OP_T    &hmr RALT OP_S &hmr RCTRL OP_R &kp OP_N &kp OP_CIR
-&kp F10   &kp OP_K     &kp OP_Y        &kp OP_EGRV          &kp OP_DOT     &hll SCREEN OP_W             &kp OP_G       &hsr RSHFT OP_C   &kp OP_M       &kp OP_H        &kp OP_V &kp OP_CCED
-                                       &lt LOWER CLIPB_HIST &hsl LSHFT TAB &mt LGUI SPACE               &lt NUMBERS SPACE &lt MOUSE OP_Z &kp OP_X 
+&kp TAB   &kp OP_AGRV  &kp OP_J        &kp OP_O             &kp OP_EACU           &kp OP_B                     &kp OP_F       &kp OP_D          &kp OP_L       &kp OP_QUOT     &kp OP_Q &kp BSPC
+&kp LSHFT &hll ARROW A &hml LCTRL OP_I &hml LALT OP_E       &hml LGUI OP_U        &kp OP_COMM                  &kp OP_P       &hmr RGUI OP_T    &hmr RALT OP_S &hmr RCTRL OP_R &kp OP_N &kp OP_CIR
+&kp F10   &kp OP_K     &kp OP_Y        &kp OP_EGRV          &hll AEROSPACE OP_DOT &hll SCREEN OP_W             &kp OP_G       &hsr RSHFT OP_C   &kp OP_M       &kp OP_H        &kp OP_V &kp OP_CCED
+                                       &lt LOWER CLIPB_HIST &hsl LSHFT TAB        &mt LGUI SPACE               &lt NUMBERS SPACE &lt MOUSE OP_Z &kp OP_X 
 
             //code pour utiler Caps_Word : &cwl MOUSE 0 (pas adapté à Optimot au 04/07/2022; les keycodes Qwerty sont pris en compte, et même si on peut
             // faire en sorte que certains keycodes ne désactivent pas Caps, je ne vois pas pour le moment comment faire pour que des keycodes
@@ -292,6 +293,23 @@
 &none &bt BT_SEL 4 &none        &none        &none        &none                        &kp LC(LS(S))       &kp LG(LC(LS(N4))) &kp LG(LS(N4)) &kp LG(LC(LS(N3))) &kp LG(LS(N3)) &trans
 &none &none        &none        &none        &none        &trans                       &kp LG(LS(OP_M))    &kp RG(RS(UP)) &kp RG(RS(DOWN))   &kp LG(LS(N9))     &kp LG(LS(N0)) &bl BL_CYCLE
                                 &none        &none        &bl BL_TOG                   &kp SPACE           &kp LG(OP_COMM)    &kp LG(OP_DOT)
+            >;
+        };
+
+        aerospace_layer {
+         display-name = "AEROSPACE";
+// TODO: update layer description
+// ------------------------------------------------------------------------------------------------------------
+// |     |     |     |     |     |     |                   |            |     |     |     |     |     |
+// |     |     |     |     |     |     |                   |            |     |     |     |     |     |
+// |     |     |     |     |     |     |                   |            |     |     |     |     |     |
+//                   |     |     |     |                   |            |     |     |
+
+            bindings = <
+&kp ESC &none &none &none &none  &none       &kp LA(LC(LS(OP_F)))     &kp LA(LC(LS(OP_D)))     &kp LA(LC(LS(OP_L)))      &kp LA(LC(LS(OP_QUOT)))  &none                     &kp BSPC
+&none   &none &none &none &none  &none       &kp LA(LC(LS(OP_P)))     &kp LA(LC(LS(LEFT)))     &kp LA(LC(LS(UP)))        &kp LA(LC(LS(DOWN)))     &kp LA(LC(LS(RIGHT)))     &kp LC(LS(N4))
+&none   &none &none &none &trans &none       &kp LA(LC(LS(OP_G)))     &kp LG(LA(LC(LS(LEFT)))) &kp LG(LA(LC(LS(UP))))    &kp LG(LA(LC(LS(DOWN)))) &kp LG(LA(LC(LS(RIGHT)))) &kp LC(LS(N5))
+                    &none &none  &kp LGUI    &none                    &none                    &none
             >;
         };
    };
