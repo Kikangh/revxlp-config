@@ -11,18 +11,6 @@
 #include "mouse.dtsi"
 #include "keymap_optimot.h"
 
-
-
-
-
-#define OPTIM   0
-#define LOWER   1
-#define MOUSE   2
-#define NUMBERS 3
-#define ARROW   4
-#define SCREEN  5
-#define AEROSPACE 6
-
 //APPLICATIONS SHORCUTS
     //Omniplan
     #define OMNIPLIDENTR LG(LS(N0))
@@ -34,9 +22,34 @@
     #define RAYCPNAME  LG(OP_DOT)
     #define RAYCPPHONE LG(LS(OP_DOT))
     #define RAYCPMAIL  LG(LS(OP_COMM))
+    #define NEWRAYNOTE LA(LG(LS(OP_N)))
+    #define RAYEMOJI   LC(LG(SPACE))
+    //Outlook
+    #define OUTLKARCHMAIL LC(OP_E)
+    #define OUTLKFILEMAIL LG(LS(OP_M))
+
+    #define OUTLKNEWMAINWINDOW LA(LG(LS(OP_N)))
+    //TextExpander
+    #define TEXTEXOFF RC(RA(LS(RG(OP_T))))
+    #define TEXTEXSEARCH RG(LS(LA(OP_F)))
+    //Hook
+    #define HOOKCPYLK   LG(LC(LA(SPACE)))
+    #define HOOKCPYMDLK LS(LA(LG(SPACE)))
+    #define HOOKTOLINK  LC(LS(LG(SPACE)))
+    #define HOOK        LG(LS(SPACE))
+    //MACOS
+    #define HIDEWINDOW LG(OP_M)
 
 
-#include "combos.dtsi" // This include **has** to be made **after** the layers' define, else it won't compile.
+#define OPTIM   0
+#define LOWER   1
+#define MOUSE   2
+#define NUMBERS 3
+#define KEYPAD  4
+#define SYMBOL  5
+#define ARROW   6
+#define SCREEN  7
+
 
 
 /*                KEY POSITIONS
@@ -46,6 +59,15 @@
   │ 12  13  14  15  16  17 │ │ 18  19  20  21  22  23 │
   │ 24  25  26  27  28  29 │ │ 30  31  32  33  34  35 │
   ╰──────────╮  36  37  38 │ │ 39  40  41 ╭───────────╯
+             ╰─────────────╯ ╰────────────╯            */
+
+/*                KEY POSITIONS TOTEM
+
+       ╭───────────────────╮ ╭────────────────────╮
+       │ 0   1   2   3   4 │ │  5   6   7   8   9 │
+  ╭────╯10  11  12  13  14 │ │ 15  16  17  18  19 ╰───╮
+  │ 20  21  22  23  24  25 │ │ 26  27  28  29  30  31 │
+  ╰──────────╮  32  33  34 │ │ 35  36  37 ╭───────────╯
              ╰─────────────╯ ╰────────────╯            */
 
 
@@ -58,8 +80,8 @@
         q_minuscule: q_minuscule {
             label = "ZM_q_minuscul";
             compatible = "zmk,behavior-macro";
-            wait-ms = <20>;
-            tap-ms = <20>;
+            //wait-ms = <40>;
+            tap-ms = <40>;
             #binding-cells = <0>;
             bindings
                 = <&macro_tap &kp CAPS>
@@ -72,8 +94,8 @@
         q_maj: q_maj {
             label = "ZM_q_maj";
             compatible = "zmk,behavior-macro";
-            wait-ms = <20>;
-            tap-ms = <20>;
+            //wait-ms = <40>;
+            tap-ms = <40>;
             #binding-cells = <0>;
             bindings
                 = <&macro_tap &kp CAPS>
@@ -81,19 +103,44 @@
                 , <&macro_tap &kp CAPS>
                 ;
         };
+        win_list: win_list {
+            label = "Current App Window list in Contexts App";
+            compatible = "zmk,behavior-macro";
+            tap-ms = <40>;
+            #binding-cells = <0>;
+            bindings
+                = <&macro_press &mo ARROW &kp LGUI>
+                , <&macro_tap &kp OP_QUOT>
+                , <&macro_pause_for_release>
+                , <&macro_release &mo ARROW &kp LGUI>
+                ;
+        };
+        apps_list: apps_list {
+            label = "All Apps Window list in Contexts App";
+            compatible = "zmk,behavior-macro";
+            tap-ms = <40>;
+            #binding-cells = <0>;
+            bindings
+                = <&macro_press &mo ARROW &kp LGUI>
+                , <&macro_tap &kp TAB>
+                , <&macro_pause_for_release>
+                , <&macro_release &mo ARROW &kp LGUI>
+                ;
+        };
     };
 };
 
-//Existang Behavior modifications :
-    &mt {
-    hold-while-undecided; //faster mod, used for CMD on left thumb key.
-    };
+#include "combos.dtsi" // This include **has** to be made **after** the layers' define, else it won't compile.
+
+//Existing Behavior modifications :
+//     &mt {
+//     hold-while-undecided; //faster mod, used for CMD on left thumb key.
+//     };
 
 // Key position groups
 #define KEYS_L 0 1 2 3 4 5 12 13 14 15 16 17 24 25 26 27 28 29
-#define KEYS_R 0 6 7 8 9 10 11 18 19 20 21 22 23 30 31 32 33 34 35   //added 0 because I want hold behavior to trigger when fast typing cmd+tab.
-// #define KEYS_R_HLL 6 7 8 9 10 11 18 19 20 21 22 23 30 31 32 33 35   //removed 34, because I want to be able to quickly type aVant without the layer switch to occur.
-#define KEYS_L_SPECIAL 0
+#define KEYS_R 6 7 8 9 10 11 18 19 20 21 22 23 30 31 32 33 34 35
+#define KEYS_L_SPECIAL 1
 #define THUMBS_L 36 37 38
 #define THUMB_L_SPECIAL 37
 #define THUMBS_R 39 40 41
@@ -115,7 +162,7 @@
             #binding-cells = <2>;
             tapping-term-ms = <250>;
             quick-tap-ms = <150>;
-            flavor = "tap-preferred"; //flavor = "balanced"; trying to see if i type faster when set to "tap-preferred"
+            flavor = "tap-preferred";
             bindings = <&kp>, <&kp>;
             //global-quick-tap-ms = <150>;
             require-prior-idle-ms = <100>;
@@ -128,7 +175,7 @@
             #binding-cells = <2>;
             tapping-term-ms = <250>;
             quick-tap-ms = <150>;
-            flavor = "tap-preferred"; //flavor = "balanced"; trying to see if i type faster when set to "tap-preferred"
+            flavor = "tap-preferred";
             bindings = <&kp>, <&kp>;
             //global-quick-tap-ms = <150>;
             require-prior-idle-ms = <125>;
@@ -143,7 +190,7 @@
             quick-tap-ms = <150>;
             flavor = "hold-preferred";
             bindings = <&kp>, <&kp>;
-            hold-trigger-key-positions = <KEYS_R KEYS_L THUMBS_L>;
+            hold-trigger-key-positions = <KEYS_R KEYS_L THUMBS_R>;
             //hold-trigger-on-release;
         };
         hsr: homerow_shift_r {
@@ -151,9 +198,20 @@
             label = "ALPHA_SFT_R";
             #binding-cells = <2>;
             tapping-term-ms = <200>;
-            quick-tap-ms = <100>; //trying to see if quick right hm shift with X works better with 100 instead of 150. Note : since I moved X from inner left thumb key, this change might not be a good idea anymore.
-            flavor = "balanced";
+            quick-tap-ms = <100>;
+            flavor = "tap-preferred";
             bindings = <&kp>, <&kp>;
+            hold-trigger-key-positions = <KEYS_L THUMBS_L>;
+        };   
+        hlr: homerow_layer_r {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HOMEROW_LAYER_R";
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            quick-tap-ms = <150>;
+            flavor = "tap-preferred";
+            bindings = <&mo>, <&kp>;
+            require-prior-idle-ms = <125>;
             hold-trigger-key-positions = <KEYS_L THUMBS_L>;
             hold-trigger-on-release;
         };
@@ -169,23 +227,14 @@
             hold-trigger-key-positions = <KEYS_R THUMBS_L THUMBS_R>;
             hold-trigger-on-release;
         };
-        //cwl: caps_word_layer {
-        //    compatible = "zmk,behavior-hold-tap";
-        //    label = "CAPS WORD LAYER";
-        //    #binding-cells = <2>;
-        //    tapping-term-ms = <260>;
-        //    //quick-tap-ms = <0>;
-        //    flavor = "tap-preferred";
-        //    bindings = <&mo>, <&caps_word>;
-        //};
-        //td0: tap_dance_0 {
-        //    compatible = "zmk,behavior-tap-dance";
-        //    label = "TAP_DANCE_0";
-        //    #binding-cells = <0>;
-        //    tapping-term-ms = <150>;
-        //    bindings = <&kp OP_X>, <&kp OP_CCED>, <&kp LC(LG(OP_Q))>;
-        //};
-    };
+        agrvtab: agrave_tab {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp OP_AGRV>, <&kp TAB>;
+            mods = <(MOD_LGUI|MOD_RGUI)>;
+            keep-mods = <(MOD_LGUI|MOD_RGUI)>;
+        };
+    }; 
 
 /*                KEY POSITIONS
 
@@ -208,15 +257,10 @@
 //                     | LOWER /   |   X / | CMD/ENTER |                   | NUMBER/ | MOUSE/ | RC+SPC|
 //                     | CLIPB HIST| LSHFT |                             | SPACE   |  W     | 
             bindings = <
-&kp TAB   &kp OP_AGRV  &kp OP_J        &kp OP_O             &kp OP_EACU           &kp OP_B                     &kp OP_F       &kp OP_D          &kp OP_L       &kp OP_QUOT     &kp OP_Q &kp BSPC
-&kp LSHFT &hll ARROW A &hml LCTRL OP_I &hml LALT OP_E       &hml LGUI OP_U        &kp OP_COMM                  &kp OP_P       &hmr RGUI OP_T    &hmr RALT OP_S &hmr RCTRL OP_R &kp OP_N &kp OP_CIR
-&kp F10   &kp OP_K     &kp OP_Y        &kp OP_EGRV          &hll AEROSPACE OP_DOT &hll SCREEN OP_W             &kp OP_G       &hsr RSHFT OP_C   &kp OP_M       &kp OP_H        &kp OP_V &kp OP_CCED
-                                       &lt LOWER CLIPB_HIST &hsl LSHFT TAB        &mt LGUI SPACE               &lt NUMBERS SPACE &lt MOUSE OP_Z &kp OP_X 
-
-            //code pour utiler Caps_Word : &cwl MOUSE 0 (pas adapté à Optimot au 04/07/2022; les keycodes Qwerty sont pris en compte, et même si on peut
-            // faire en sorte que certains keycodes ne désactivent pas Caps, je ne vois pas pour le moment comment faire pour que des keycodes
-            // qwerty de lettres et qui sont par exemple , ou . en optimot puissent désactiver CAPS au lieu de le laisser actif).
-            // Update : PeteJohansson m'a recommandé d'ouvrir une issue sur le github avec mes propositions. À faire éventuellement quand j'aurai du temps.
+&none   &agrvtab     &kp OP_J        &kp OP_O             &kp OP_EACU    &kp OP_B                     &kp OP_F           &kp OP_D        &kp OP_L       &kp OP_QUOT     &kp OP_Q &none
+&kp F10 &hll ARROW A &hml LCTRL OP_I &hml LALT OP_E       &hml LGUI OP_U &kp OP_COMM                  &kp OP_P           &hmr RGUI OP_T  &hmr RALT OP_S &hmr RCTRL OP_R &kp OP_N &kp BSPC
+&none   &kp OP_K     &kp OP_Y        &kp OP_EGRV          &hll OP_DOT    &hll SCREEN OP_W             &kp OP_G           &hsr RSHFT OP_C &kp OP_M       &kp OP_H        &kp OP_V &none
+                                     &lt LOWER CLIPB_HIST &hsl LSHFT TAB &mt LGUI SPACE               &hlr NUMBERS SPACE &hlr MOUSE OP_Z &kp OP_X 
             >;
         };
 
@@ -228,10 +272,10 @@
 // |       |  =  |  -  |  +   |DoNotDist |  F12 |                   |  [   |  ]    |  ;    |  :   |   \   |       |
 //               |     |      |          |      |                   |      |       |       |      |
             bindings = <                       
-&kp ESC &kp F1        &kp F2         &kp F3        &kp F4      &kp F5            &kp LA(LC(LS(OP_F)))     &kp LA(LC(LS(OP_D)))     &kp LA(LC(LS(OP_L)))      &kp LA(LC(LS(OP_QUOT))) &none                 &kp F12
-&kp F6  &kp F7        &kp F8         &kp F9        &kp F10     &kp F11           &kp LA(LC(LS(OP_P)))     &kp LA(LC(LS(LEFT)))     &kp LA(LC(LS(UP)))        &kp LA(LC(LS(DOWN)))    &kp LA(LC(LS(RIGHT))) &kp LS(LA(LC(LG(OP_G))))
-&kp F3  &kp RAYCPNAME &kp RAYCPPHONE &kp RAYCPMAIL &kp LG(F12) &kp F12           &kp LA(LC(LS(OP_G)))     &kp LC(LG(OP_Q))         &kp LA(LC(LS(OP_M)))      &kp LA(LC(LS(OP_H)))    &none                 &kp LS(LA(LC(LG(OP_D))))
-                                     &trans        &trans      &trans            &kp LG(LA(LC(LS(LEFT)))) &kp LG(LA(LC(LS(DOWN)))) &kp LG(LA(LC(LS(RIGHT))))      
+&none  &kp F1        &kp F2         &kp F3        &kp F4  &kp F5            &kp LA(LC(LS(OP_F)))     &kp LA(LC(LS(OP_D)))     &kp LA(LC(LS(OP_L)))      &kp LA(LC(LS(OP_QUOT))) &none                 &none
+&kp F3 &kp F6        &kp F7         &kp F8        &kp F9  &kp F10           &kp LA(LC(LS(LG(OP_P)))) &kp LA(LC(LS(LEFT)))     &kp LA(LC(LS(UP)))        &kp LA(LC(LS(DOWN)))    &kp LA(LC(LS(RIGHT))) &kp LG(F12)
+&none  &kp RAYCPNAME &kp RAYCPPHONE &kp RAYCPMAIL &kp F11 &kp F12           &kp LA(LC(LS(OP_G)))     &kp LC(LG(OP_Q))         &kp LA(LC(LS(LG(OP_C))))  &kp LA(LC(LS(OP_H)))    &none                 &none
+                                    &trans        &trans  &trans            &kp LG(LA(LC(LS(LEFT)))) &kp LG(LA(LC(LS(DOWN)))) &kp LG(LA(LC(LS(RIGHT))))      
             >;
         };
 
@@ -243,10 +287,10 @@
 // |AppsForceQuit        | FileMailOutlook     | ZoomReset  | Zoom-        | Zoom+      |EMOJI |                |      |      |       |      |       |       |
 //                                                          |              |            | Hook |                |      |      |       |
             bindings = <    
-&kp ESC         &kp LA(LC(LG(LS(R)))) &kp LG(LEFT)   &mmv MOVE_UP   &kp LG(RIGHT)   &kp LA(LC(LS(SPACE)))               &kp C_MUTE &kp C_VOL_DN   &kp C_VOL_UP   &kp LG(OP_M)     &none           &trans
-&kp HOME        &kp RA(RG(G))         &mmv MOVE_LEFT &mmv MOVE_DOWN &mmv MOVE_RIGHT &kp END                             &kp PG_UP  &mkp LCLK      &mkp RCLK      &kp LG(LS(OP_M)) &none           &kp LA(LG(LS(OP_N)))
-&kp LA(LG(ESC)) &kp LC(D)             &kp LG(N0)     &kp LG(OP_AT)  &kp LG(OP_HASH) &kp LC(LG(SPACE))                   &kp PG_DN  &msc SCRL_LEFT &msc SCRL_DOWN &msc SCRL_UP     &msc SCRL_RIGHT &none
-                                                     &trans         &trans          &trans                              &trans     &trans         &trans  
+&none &kp LA(LC(LG(LS(OP_EACU)))) &kp LG(LEFT)   &mmv MOVE_UP   &kp LG(RIGHT)   &kp LA(LC(LS(SPACE)))          &kp C_MUTE &kp C_VOL_DN    &kp C_VOL_UP   &kp OUTLKFILEMAIL &kp HOME       &none
+&none &none                       &mmv MOVE_LEFT &mmv MOVE_DOWN &mmv MOVE_RIGHT &none                          &kp PG_UP  &mkp LCLK       &mkp RCLK      &kp OUTLKARCHMAIL &kp END        &trans
+&none &none                       &kp LG(N0)     &kp LG(OP_AT)  &kp LG(OP_HASH) &kp RAYEMOJI                   &kp PG_DN  &msc SCRL_RIGHT &msc SCRL_DOWN &msc SCRL_UP      &msc SCRL_LEFT &none
+                                                     &trans     &trans          &trans                         &trans     &trans          &trans  
             >;
         };
 
@@ -258,12 +302,58 @@
 // | F10   | ??ê?? |  ;  |  :   |  .   |   &     |                   |  ,   |   No  |   No  |   H   |   No  |   #/% |
 //                     | LCTRL| LALT |CMD/space|                   | togg | RCTRL | RALT  |
             bindings = <            
-&kp ESC   &kp N1               &kp N2           &kp N3          &kp N4          &kp N5                   &kp N6      &kp N7             &kp N8          &kp N9           &kp N0    &kp BSPC
-&kp LSHFT &hll ARROW KP_N1     &hml LCTRL KP_N2 &hml LALT KP_N3 &hml LGUI KP_N4 &kp KP_N5                &kp KP_N6   &hmr RGUI KP_N7    &hmr RALT KP_N8 &hmr RCTRL KP_N9 &kp KP_N0 &kp OP_AT
-&kp CAPS  &kp NON_US_BACKSLASH &kp OP_SCLN      &kp OP_COLN     &trans          &kp LA(OP_T)             &kp OP_COMM &hsr RSHFT OP_HASH &kp OP_AT       &trans           &none     &kp OP_HASH
-                                                &kp RALT        &kp LSHFT       &mt LGUI SPACE           &trans      &kp LALT           &kp RCTRL
+&none  &kp N1               &kp N2           &kp N3          &kp N4          &kp N5                   &kp N6      &kp N7             &kp N8          &kp N9           &kp N0    &none
+&kp F3 &hll ARROW KP_N1     &hml LCTRL KP_N2 &hml LALT KP_N3 &hml LGUI KP_N4 &kp KP_N5                &kp KP_N6   &hmr RGUI KP_N7    &hmr RALT KP_N8 &hmr RCTRL KP_N9 &kp KP_N0 &kp OP_AT
+&none  &kp NON_US_BACKSLASH &kp OP_SCLN      &kp OP_COLN     &trans          &kp CAPS                 &kp OP_COMM &kp RSHFT          &trans          &trans           &none     &none
+                                             &kp RALT        &kp LSHFT       &mt LGUI SPACE           &trans      &kp RALT           &to 0
             >;
         };
+
+                keypad_layer {
+// ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+display-name = "KEYPAD"                   ;
+// ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+//             ┏━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┓   ┏━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┓
+//             ┃           ┃           ┃           ┃           ┃           ┃   ┃           ┃    F7     ┃    F8     ┃    F9     ┃    F12    ┃
+//             ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫
+//             ┃           ┃           ┃           ┃           ┃           ┃   ┃           ┃    F4     ┃    F5     ┃    F6     ┃    F11    ┃
+// ┏━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┓
+// ┃           ┃           ┃           ┃           ┃           ┃           ┃   ┃           ┃    F1     ┃    F2     ┃    F3     ┃    F10    ┃           ┃
+// ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
+//                                     ┃           ┃           ┃           ┃   ┃           ┃           ┃           ┃
+//                                     ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
+ bindings = <
+// ╷           ╷           ╷           ╷           ╷           ╷           ╷   ╷           ╷           ╷           ╷           ╷           ╷           ╷
+
+&none          &kp KP_EQUAL      &kp KP_N7        &kp KP_N8        &kp KP_N9           &kp KP_PLUS                 &kp N6      &kp N7           &kp N8          &kp N9          &kp N0 &none   
+&kp KP_NUMLOCK &hll SYMBOL KP_N0 &hml LCTRL KP_N4 &hml LALT KP_N5  &hml LGUI KP_N6     &kp KP_MINUS                &kp N1      &kp N2           &kp N3          &kp N4          &kp N5 &kp BSPC
+&none.         &kp KP_SLASH      &kp KP_N1        &kp KP_N2        &kp KP_N3           &kp KP_MULTIPLY             &kp OP_AT   &kp OP_HASH      &none           &none           &none  &none
+                                                  &kp KP_DOT       &hsl LSHFT KP_COMMA &mt LGUI SPACE              &none &none &to 0
+                        >;
+                };
+
+                symbol_layer {
+// ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+display-name = "SYMBOL"                   ;
+// ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+//             ┏━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┓   ┏━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┓
+//             ┃           ┃           ┃           ┃           ┃           ┃   ┃           ┃    F7     ┃    F8     ┃    F9     ┃    F12    ┃
+//             ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫
+//             ┃           ┃           ┃           ┃           ┃           ┃   ┃           ┃    F4     ┃    F5     ┃    F6     ┃    F11    ┃
+// ┏━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┓
+// ┃           ┃           ┃           ┃           ┃           ┃           ┃   ┃           ┃    F1     ┃    F2     ┃    F3     ┃    F10    ┃           ┃
+// ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
+//                                     ┃           ┃           ┃           ┃   ┃           ┃           ┃           ┃
+//                                     ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
+ bindings = <
+// ╷           ╷           ╷           ╷           ╷           ╷           ╷   ╷           ╷           ╷           ╷           ╷           ╷           ╷
+
+&none &none   &none &kp LA(N9)   &kp LA(N0)   &kp OP_H                &none &none &none &none &none &none
+&none &trans  &none &kp N9       &kp N0       &kp OP_J                &none &none &none &none &none &none
+&none &none   &none &kp LA(OP_D) &kp LA(OP_L) &kp OP_M                &none &none &none &none &none &none
+                    &none        &none        &mt LGUI SPACE          &none &none &to 0
+                        >;
+                };
 
         arrow_layer {
         display-name = "ARROW";
@@ -273,10 +363,10 @@
 // | RESET |     |HookCpyLk | HookCpyMDLk  | HookToLink  |   Hook    |                   |  ??ê?? |  $/€          |PGUP|PGDWN|TxTXSearch|TxTXDisable|
 //                          |              |   LSHFT     |CMD/return |                   |  SPC |WkfyPrev         |WkfyNext|
             bindings = <
-&to 0       &none     &kp OMNIPLIDENTL      &kp OMNIPLIDENTR      &kp LG(LS(OP_M))      &kp BSPC                       &kp OP_AT      &kp LS(LA(LG(N8))) &none         &none      &q_minuscule         &kp BSPC
-&trans      &trans    &kp LCTRL             &kp LALT              &kp LGUI              &kp ONEPWDQUICK                &kp OP_HASH    &kp LEFT           &kp UP        &kp DOWN   &kp RIGHT            &q_maj
-&bootloader &none     &kp LG(LC(LA(SPACE))) &kp LS(LA(LG(SPACE))) &kp LC(LS(LG(SPACE))) &kp LG(LS(SPACE))              &kp LS(OP_DLR) &kp OP_DLR         &kp PG_UP     &kp PG_DN  &kp RG(LS(LA(OP_F))) &kp RA(RC(RG(OP_T)))
-                                            &trans                &trans                &trans                         &trans         &kp HOME           &kp END
+&none       &to 0  &kp OMNIPLIDENTL &kp OMNIPLIDENTR &kp LG(LS(OP_M)) &kp BSPC                    &kp LS(LA(LG(N8))) &none       &kp LA(BSPC)  &kp LG(BSPC) &kp BSPC         &none
+&bootloader &trans &kp LCTRL        &kp LALT         &kp LGUI         &kp ONEPWDQUICK             &kp OP_CIR         &kp LEFT    &kp UP        &kp DOWN     &kp RIGHT        &kp TEXTEXOFF
+&none       &none  &kp HOOKCPYLK    &kp HOOKCPYMDLK  &kp HOOKTOLINK   &kp LS(F3)                  &kp LS(OP_DLR)     &kp OP_CCED &kp OP_DLR    &trans       &kp TEXTEXSEARCH &none
+                                    &kp ESC          &trans           &trans                      &trans             &trans      &trans
             >;
         };
 
@@ -290,27 +380,10 @@
 //                   |     |     |     |                   |            |     |     |
 
             bindings = <
-&none &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_CLR                   &kp LC(LS(OP_QUOT)) &kp C_PREV         &kp C_PP       &kp C_NEXT         &trans         &trans
-&none &bt BT_SEL 4 &none        &none        &none        &none                        &kp LC(LS(S))       &kp LG(LC(LS(N4))) &kp LG(LS(N4)) &kp LG(LC(LS(N3))) &kp LG(LS(N3)) &trans
-&none &none        &none        &none        &none        &trans                       &kp LG(LS(OP_M))    &kp RG(RS(UP)) &kp RG(RS(DOWN))   &kp LG(LS(N9))     &kp LG(LS(N0)) &bl BL_CYCLE
-                                &none        &none        &bl BL_TOG                   &kp SPACE           &kp LG(OP_COMM)    &kp LG(OP_DOT)
-            >;
-        };
-
-        aerospace_layer {
-         display-name = "AEROSPACE";
-// TODO: update layer description
-// ------------------------------------------------------------------------------------------------------------
-// |     |     |     |     |     |     |                   |            |     |     |     |     |     |
-// |     |     |     |     |     |     |                   |            |     |     |     |     |     |
-// |     |     |     |     |     |     |                   |            |     |     |     |     |     |
-//                   |     |     |     |                   |            |     |     |
-
-            bindings = <
-&kp ESC &none &none &none &none  &none       &kp LA(LC(LS(OP_F)))     &kp LA(LC(LS(OP_D)))     &kp LA(LC(LS(OP_L)))      &kp LA(LC(LS(OP_QUOT)))  &none                     &kp BSPC
-&none   &none &none &none &none  &none       &kp LA(LC(LS(OP_P)))     &kp LA(LC(LEFT))     &kp LA(LC(UP))        &kp LA(LC(DOWN))     &kp LA(LC(RIGHT))     &kp LC(LS(N4))
-&none   &none &none &none &trans &none       &kp LG(LA(LC(LS(OP_G)))) &kp LG(LA(LC(LEFT))) &kp LG(LA(LC(UP)))    &kp LG(LA(LC(DOWN))) &kp LG(LA(LC(RIGHT))) &kp LC(LS(N5))
-                    &none &none  &kp LGUI    &none                    &none                    &none
+&none      &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4                 &kp LC(LS(OP_QUOT)) &kp C_PREV         &kp C_PP       &kp C_NEXT         &trans         &none
+&bl BL_TOG &none        &none        &none        &none        &none                        &kp LC(LS(S))       &kp LG(LC(LS(N4))) &kp LG(LS(N4)) &kp LG(LC(LS(N3))) &kp LG(LS(N3)) &bl BL_CYCLE
+&none      &none        &none        &none        &none        &trans                       &kp LG(LS(OP_M))    &kp LG(LS(N9))     &kp RG(RS(UP)) &kp RG(RS(DOWN))   &kp LG(LS(N0)) &none
+                                     &bt BT_CLR   &none        &none                        &kp SPACE           &kp LG(OP_COMM)    &kp LG(OP_DOT)
             >;
         };
    };
