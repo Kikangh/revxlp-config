@@ -78,7 +78,7 @@
 / {
     macros {
         q_minuscule: q_minuscule {
-            label = "ZM_q_minuscul";
+            //label = "ZM_q_minuscul";
             compatible = "zmk,behavior-macro";
             //wait-ms = <40>;
             tap-ms = <40>;
@@ -92,7 +92,7 @@
                 ;
         };
         q_maj: q_maj {
-            label = "ZM_q_maj";
+            //label = "ZM_q_maj";
             compatible = "zmk,behavior-macro";
             //wait-ms = <40>;
             tap-ms = <40>;
@@ -104,7 +104,7 @@
                 ;
         };
         win_list: win_list {
-            label = "Current App Window list in Contexts App";
+            //label = "Current App Window list in Contexts App";
             compatible = "zmk,behavior-macro";
             tap-ms = <40>;
             #binding-cells = <0>;
@@ -116,7 +116,7 @@
                 ;
         };
         apps_list: apps_list {
-            label = "All Apps Window list in Contexts App";
+            //label = "All Apps Window list in Contexts App";
             compatible = "zmk,behavior-macro";
             tap-ms = <40>;
             #binding-cells = <0>;
