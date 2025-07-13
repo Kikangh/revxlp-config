@@ -158,7 +158,7 @@
     behaviors {
         hml: homerow_mods_l {
             compatible = "zmk,behavior-hold-tap";
-            label = "ALPHA_MT_L";
+            //label = "ALPHA_MT_L";
             #binding-cells = <2>;
             tapping-term-ms = <250>;
             quick-tap-ms = <150>;
@@ -171,7 +171,7 @@
         };
         hmr: homerow_mods_r {
             compatible = "zmk,behavior-hold-tap";
-            label = "ALPHA_MT_R";
+            //label = "ALPHA_MT_R";
             #binding-cells = <2>;
             tapping-term-ms = <250>;
             quick-tap-ms = <150>;
@@ -184,7 +184,7 @@
         };
         hsl: homerow_shift_l {
             compatible = "zmk,behavior-hold-tap";
-            label = "ALPHA_SFT_L";
+            //label = "ALPHA_SFT_L";
             #binding-cells = <2>;
             tapping-term-ms = <200>;
             quick-tap-ms = <150>;
@@ -195,7 +195,7 @@
         };
         hsr: homerow_shift_r {
             compatible = "zmk,behavior-hold-tap";
-            label = "ALPHA_SFT_R";
+            //label = "ALPHA_SFT_R";
             #binding-cells = <2>;
             tapping-term-ms = <200>;
             quick-tap-ms = <100>;
@@ -205,7 +205,7 @@
         };   
         hlr: homerow_layer_r {
             compatible = "zmk,behavior-hold-tap";
-            label = "HOMEROW_LAYER_R";
+            //label = "HOMEROW_LAYER_R";
             #binding-cells = <2>;
             tapping-term-ms = <200>;
             quick-tap-ms = <150>;
@@ -217,7 +217,7 @@
         };
         hll: homerow_layer_l {
             compatible = "zmk,behavior-hold-tap";
-            label = "HOMEROW_LAYER_L";
+            //label = "HOMEROW_LAYER_L";
             #binding-cells = <2>;
             tapping-term-ms = <200>; // switched from 300 to 200, getting too much "af" instead of "@" (layer not triggered)
             quick-tap-ms = <150>; //trying to see what gives with 0 instead of 150 => not kept.
@@ -325,10 +325,10 @@ display-name = "KEYPAD"                   ;
  bindings = <
 // ╷           ╷           ╷           ╷           ╷           ╷           ╷   ╷           ╷           ╷           ╷           ╷           ╷           ╷
 
-&none          &kp KP_EQUAL      &kp KP_N7        &kp KP_N8        &kp KP_N9           &kp KP_PLUS                 &kp N6      &kp N7           &kp N8          &kp N9          &kp N0 &none   
-&kp KP_NUMLOCK &hll SYMBOL KP_N0 &hml LCTRL KP_N4 &hml LALT KP_N5  &hml LGUI KP_N6     &kp KP_MINUS                &kp N1      &kp N2           &kp N3          &kp N4          &kp N5 &kp BSPC
-&none          &kp KP_SLASH      &kp KP_N1        &kp KP_N2        &kp KP_N3           &kp KP_MULTIPLY             &kp OP_AT   &kp OP_HASH      &none           &none           &none  &none
-                                                  &kp KP_DOT       &hsl LSHFT KP_COMMA &mt LGUI SPACE              &none &none &to 0
+&none          &kp KP_EQUAL      &kp KP_N7        &kp KP_N8        &kp KP_N9           &kp KP_PLUS                 &kp N6      &kp N7      &kp N8 &kp N9 &kp N0 &none   
+&kp KP_NUMLOCK &hll SYMBOL KP_N0 &hml LCTRL KP_N4 &hml LALT KP_N5  &hml LGUI KP_N6     &kp KP_MINUS                &kp N1      &kp N2      &kp N3 &kp N4 &kp N5 &kp BSPC
+&none          &kp KP_SLASH      &kp KP_N1        &kp KP_N2        &kp KP_N3           &kp KP_MULTIPLY             &kp OP_AT   &kp OP_HASH &none  &none  &none  &none
+                                                  &kp KP_DOT       &hsl LSHFT KP_COMMA &mt LGUI SPACE              &none       &none       &to 0
                         >;
                 };
 
