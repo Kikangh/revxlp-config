@@ -227,13 +227,13 @@
             hold-trigger-key-positions = <KEYS_R THUMBS_L THUMBS_R>;
             hold-trigger-on-release;
         };
-        agrvtab: agrave_tab {
+ /*       agrvtab: agrave_tab {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <&kp OP_AGRV>, <&kp TAB>;
             mods = <(MOD_LGUI|MOD_RGUI)>;
             keep-mods = <(MOD_LGUI|MOD_RGUI)>;
-        };
+        }; */
     }; 
 
 /*                KEY POSITIONS
@@ -257,7 +257,7 @@
 //                     | LOWER /   |   X / | CMD/ENTER |                   | NUMBER/ | MOUSE/ | RC+SPC|
 //                     | CLIPB HIST| LSHFT |                             | SPACE   |  W     | 
             bindings = <
-&none   &agrvtab     &kp OP_J        &kp OP_O             &kp OP_EACU    &kp OP_B                     &kp OP_F           &kp OP_D        &kp OP_L       &kp OP_QUOT     &kp OP_Q &none
+&none   &kp OP_AGRAV     &kp OP_J        &kp OP_O             &kp OP_EACU    &kp OP_B                     &kp OP_F           &kp OP_D        &kp OP_L       &kp OP_QUOT     &kp OP_Q &none
 &kp F10 &hll ARROW A &hml LCTRL OP_I &hml LALT OP_E       &hml LGUI OP_U &kp OP_COMM                  &kp OP_P           &hmr RGUI OP_T  &hmr RALT OP_S &hmr RCTRL OP_R &kp OP_N &kp BSPC
 &none   &kp OP_K     &kp OP_Y        &kp OP_EGRV          &hll OP_DOT    &hll SCREEN OP_W             &kp OP_G           &hsr RSHFT OP_C &kp OP_M       &kp OP_H        &kp OP_V &none
                                      &lt LOWER CLIPB_HIST &hsl LSHFT TAB &mt LGUI SPACE               &hlr NUMBERS SPACE &hlr MOUSE OP_Z &kp OP_X 
